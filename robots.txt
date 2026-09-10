@@ -1,0 +1,10 @@
+# Robots.txt for Sushil Interior (Saharanpur, UP)
+# https://sushilinterior.com
+
+User-agent: *
+Allow: /
+Disallow: /scratch/
+
+# Sitemap location
+Sitemap: https://sushilinterior.com/sitemap.xml
+
