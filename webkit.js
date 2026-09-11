@@ -45,70 +45,6 @@ const initStudio = () => {
         return texture;
     };
 
-    const createArtTexture = () => {
-        const canvas = document.createElement('canvas');
-        canvas.width = 512;
-        canvas.height = 700;
-        const ctx = canvas.getContext('2d');
-        // Textured plaster base
-        ctx.fillStyle = '#EBE7DF';
-        ctx.fillRect(0, 0, 512, 700);
-
-        // Abstract architectural shapes
-        ctx.fillStyle = '#B85D3D'; // Terracotta
-        ctx.beginPath();
-        ctx.arc(256, 300, 160, 0.2 * Math.PI, 1.3 * Math.PI);
-        ctx.fill();
-
-        ctx.fillStyle = '#4E5B52'; // Sage
-        ctx.beginPath();
-        ctx.rect(140, 360, 220, 180);
-        ctx.fill();
-
-        ctx.fillStyle = '#C29F68'; // Brass gold
-        ctx.beginPath();
-        ctx.arc(320, 220, 60, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.fillStyle = '#1C1C1A'; // Charcoal stroke
-        ctx.lineWidth = 6;
-        ctx.beginPath();
-        ctx.moveTo(100, 600);
-        ctx.bezierCurveTo(200, 480, 300, 550, 420, 440);
-        ctx.stroke();
-
-        const texture = new THREE.CanvasTexture(canvas);
-        return texture;
-    };
-
-    const createRugTexture = () => {
-        const canvas = document.createElement('canvas');
-        canvas.width = 256;
-        canvas.height = 256;
-        const ctx = canvas.getContext('2d');
-        ctx.fillStyle = '#ECE7DF';
-        ctx.fillRect(0, 0, 256, 256);
-
-        // Woven grid texture
-        ctx.strokeStyle = 'rgba(160, 150, 138, 0.25)';
-        ctx.lineWidth = 1;
-        for (let i = 0; i < 256; i += 8) {
-            ctx.beginPath();
-            ctx.moveTo(0, i);
-            ctx.lineTo(256, i);
-            ctx.stroke();
-            ctx.beginPath();
-            ctx.moveTo(i, 0);
-            ctx.lineTo(i, 256);
-            ctx.stroke();
-        }
-        const texture = new THREE.CanvasTexture(canvas);
-        texture.wrapS = THREE.RepeatWrapping;
-        texture.wrapT = THREE.RepeatWrapping;
-        texture.repeat.set(6, 5);
-        return texture;
-    };
-
     // --- Scene, Camera, Renderer ---
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0xE4DFD5);
@@ -159,13 +95,6 @@ const initStudio = () => {
     lampLight.castShadow = true;
     scene.add(lampLight);
 
-    // Subtle gallery accent light for wall art
-    const artSpot = new THREE.SpotLight(0xffeedd, 1.4, 12, Math.PI / 6, 0.4, 1);
-    artSpot.position.set(2.4, 5.5, 2.5);
-    artSpot.target.position.set(2.4, 3.4, -4.4);
-    scene.add(artSpot);
-    scene.add(artSpot.target);
-
     // --- Materials & Textures ---
     const woodFloorTexture = createWoodTexture();
     const floorMaterial = new THREE.MeshStandardMaterial({
@@ -184,19 +113,6 @@ const initStudio = () => {
         color: 0x8A6D55,
         roughness: 0.7,
         metalness: 0.08
-    });
-
-    // Dynamic sofa fabric material
-    const sofaMaterial = new THREE.MeshStandardMaterial({
-        color: 0xE2DDD4,
-        roughness: 0.9,
-        metalness: 0.02
-    });
-
-    const travertineMaterial = new THREE.MeshStandardMaterial({
-        color: 0xDCD5C8,
-        roughness: 0.45,
-        metalness: 0.05
     });
 
     const brassMaterial = new THREE.MeshStandardMaterial({
@@ -275,7 +191,7 @@ const initStudio = () => {
     baseboardBack.position.set(0, 0.11, -4.42);
     scene.add(baseboardBack);
 
-    // Fluted Wood Feature Wall Panel (behind sofa)
+    // Fluted Wood Kitchen Backsplash Wall Panel
     const flutedGroup = new THREE.Group();
     const fluteCount = 38;
     const fluteWidth = 0.06;
@@ -287,202 +203,282 @@ const initStudio = () => {
     }
     scene.add(flutedGroup);
 
-    // Textured Area Rug
-    const rug = new THREE.Mesh(
-        new THREE.BoxGeometry(5.8, 0.04, 4.6),
-        new THREE.MeshStandardMaterial({ map: createRugTexture(), roughness: 0.95 })
-    );
-    rug.position.set(0.6, 0.02, 0.5);
-    rug.receiveShadow = true;
-    scene.add(rug);
+    // --- Materials for Kitchen Slabs, Stoves & Compartments ---
+    const quartzSlabMaterial = new THREE.MeshStandardMaterial({
+        color: 0xF4F0EA,
+        roughness: 0.18,
+        metalness: 0.12
+    });
 
-    // --- Bespoke Designer Sofa ---
-    const sofaGroup = new THREE.Group();
+    const blackGlassMaterial = new THREE.MeshStandardMaterial({
+        color: 0x141414,
+        roughness: 0.08,
+        metalness: 0.9
+    });
 
-    // Sofa Base Plinth
-    const sofaBase = new THREE.Mesh(new THREE.BoxGeometry(4.2, 0.24, 1.8), darkMetalMaterial);
-    sofaBase.position.set(1.1, 0.12, 0.9);
-    sofaBase.castShadow = true;
-    sofaBase.receiveShadow = true;
-    sofaGroup.add(sofaBase);
+    const teakCabinetMaterial = new THREE.MeshStandardMaterial({
+        color: 0x4A2810,
+        roughness: 0.45,
+        metalness: 0.05
+    });
 
-    // Sofa Main Bench Cushions (3 sections)
-    for (let i = 0; i < 3; i++) {
-        const seatCushion = new THREE.Mesh(new THREE.BoxGeometry(1.36, 0.45, 1.7), sofaMaterial);
-        seatCushion.position.set(-0.25 + i * 1.38, 0.44, 0.9);
-        seatCushion.castShadow = true;
-        seatCushion.receiveShadow = true;
-        sofaGroup.add(seatCushion);
+    const stainlessSteelMaterial = new THREE.MeshStandardMaterial({
+        color: 0xC8CBCF,
+        roughness: 0.25,
+        metalness: 0.88
+    });
+
+    const castIronMaterial = new THREE.MeshStandardMaterial({
+        color: 0x1E1E1E,
+        roughness: 0.6,
+        metalness: 0.4
+    });
+
+    window.updateCabinetMaterial = (colorHex) => {
+        teakCabinetMaterial.color.set(colorHex);
+    };
+
+    window.updateSlabMaterial = (slabType) => {
+        if (slabType === 'quartz') {
+            quartzSlabMaterial.color.set(0xF4F0EA);
+            quartzSlabMaterial.roughness = 0.18;
+            quartzSlabMaterial.metalness = 0.12;
+        } else if (slabType === 'granite') {
+            quartzSlabMaterial.color.set(0x1A1A1A);
+            quartzSlabMaterial.roughness = 0.25;
+            quartzSlabMaterial.metalness = 0.35;
+        } else if (slabType === 'porcelain') {
+            quartzSlabMaterial.color.set(0xEFE6D8);
+            quartzSlabMaterial.roughness = 0.12;
+            quartzSlabMaterial.metalness = 0.15;
+        }
+    };
+
+    // --- Modular Kitchen Counter Base & Cabinet Body ---
+    const kitchenIslandGroup = new THREE.Group();
+
+    // Base Cabinet Plinth (Saharanpur Teak Cabinetry)
+    const cabinetBody = new THREE.Mesh(new THREE.BoxGeometry(7.6, 2.3, 2.4), teakCabinetMaterial);
+    cabinetBody.position.set(0, 1.15, -0.6);
+    cabinetBody.castShadow = true;
+    cabinetBody.receiveShadow = true;
+    kitchenIslandGroup.add(cabinetBody);
+
+    // --- Kitchen Countertop Slab (Slape) with Waterfall Edge ---
+    // Top Slab (Polished Quartz Slape)
+    const countertopSlab = new THREE.Mesh(new THREE.BoxGeometry(7.85, 0.18, 2.65), quartzSlabMaterial);
+    countertopSlab.position.set(0, 2.39, -0.6);
+    countertopSlab.castShadow = true;
+    countertopSlab.receiveShadow = true;
+    kitchenIslandGroup.add(countertopSlab);
+
+    // Left Waterfall Slab Edge
+    const leftWaterfall = new THREE.Mesh(new THREE.BoxGeometry(0.18, 2.48, 2.65), quartzSlabMaterial);
+    leftWaterfall.position.set(-3.925, 1.24, -0.6);
+    leftWaterfall.castShadow = true;
+    leftWaterfall.receiveShadow = true;
+    kitchenIslandGroup.add(leftWaterfall);
+
+    // Right Waterfall Slab Edge
+    const rightWaterfall = new THREE.Mesh(new THREE.BoxGeometry(0.18, 2.48, 2.65), quartzSlabMaterial);
+    rightWaterfall.position.set(3.925, 1.24, -0.6);
+    rightWaterfall.castShadow = true;
+    rightWaterfall.receiveShadow = true;
+    kitchenIslandGroup.add(rightWaterfall);
+
+    // --- Built-in 4-Burner Toughened Glass Stove Hob ---
+    const stoveGroup = new THREE.Group();
+
+    // Glass Hob Bed
+    const hobGlass = new THREE.Mesh(new THREE.BoxGeometry(2.4, 0.04, 1.6), blackGlassMaterial);
+    hobGlass.position.set(-1.6, 2.5, -0.6);
+    hobGlass.castShadow = true;
+    stoveGroup.add(hobGlass);
+
+    // Hob Stainless Bevel Trim
+    const hobTrim = new THREE.Mesh(new THREE.BoxGeometry(2.44, 0.02, 1.64), stainlessSteelMaterial);
+    hobTrim.position.set(-1.6, 2.48, -0.6);
+    stoveGroup.add(hobTrim);
+
+    // 4 Burners with Brass Core & Cast Iron Pan Support Grates
+    const burnerOffsets = [
+        { x: -2.1, z: -0.9, r: 0.18 },
+        { x: -1.1, z: -0.9, r: 0.15 },
+        { x: -2.1, z: -0.3, r: 0.15 },
+        { x: -1.1, z: -0.3, r: 0.22 }
+    ];
+
+    burnerOffsets.forEach(b => {
+        // Brass inner flame ring
+        const brassCore = new THREE.Mesh(new THREE.CylinderGeometry(b.r * 0.7, b.r * 0.7, 0.04, 24), brassMaterial);
+        brassCore.position.set(b.x, 2.54, b.z);
+        brassCore.castShadow = true;
+        stoveGroup.add(brassCore);
+
+        // Cast iron burner cap
+        const burnerCap = new THREE.Mesh(new THREE.CylinderGeometry(b.r, b.r * 1.05, 0.03, 24), castIronMaterial);
+        burnerCap.position.set(b.x, 2.56, b.z);
+        burnerCap.castShadow = true;
+        stoveGroup.add(burnerCap);
+
+        // Pan Support Cross Grate
+        const grate1 = new THREE.Mesh(new THREE.BoxGeometry(b.r * 2.3, 0.04, 0.04), castIronMaterial);
+        grate1.position.set(b.x, 2.58, b.z);
+        grate1.castShadow = true;
+        stoveGroup.add(grate1);
+
+        const grate2 = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.04, b.r * 2.3), castIronMaterial);
+        grate2.position.set(b.x, 2.58, b.z);
+        grate2.castShadow = true;
+        stoveGroup.add(grate2);
+    });
+
+    // 4 Rotary Stove Knobs on Front Slab Fascia
+    for (let k = 0; k < 4; k++) {
+        const knob = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.04, 16), darkMetalMaterial);
+        knob.rotation.x = Math.PI / 2;
+        knob.position.set(-2.05 + k * 0.3, 2.3, 0.73);
+        knob.castShadow = true;
+        stoveGroup.add(knob);
+
+        const knobPointer = new THREE.Mesh(new THREE.BoxGeometry(0.015, 0.04, 0.02), brassMaterial);
+        knobPointer.position.set(-2.05 + k * 0.3, 2.32, 0.75);
+        stoveGroup.add(knobPointer);
     }
 
-    // Backrest Cushion (Long upholstered back)
-    const backrest = new THREE.Mesh(new THREE.BoxGeometry(4.2, 0.75, 0.4), sofaMaterial);
-    backrest.position.set(1.1, 0.95, 0.15);
-    backrest.castShadow = true;
-    backrest.receiveShadow = true;
-    sofaGroup.add(backrest);
+    kitchenIslandGroup.add(stoveGroup);
 
-    // Left & Right Armrests
-    const leftArm = new THREE.Mesh(new THREE.BoxGeometry(0.35, 0.62, 1.7), sofaMaterial);
-    leftArm.position.set(-1.08, 0.58, 0.88);
-    leftArm.castShadow = true;
-    sofaGroup.add(leftArm);
+    // --- Stainless Steel Undermount Kitchen Sink & Gooseneck Faucet ---
+    const sinkGroup = new THREE.Group();
 
-    const rightArm = new THREE.Mesh(new THREE.BoxGeometry(0.35, 0.62, 1.7), sofaMaterial);
-    rightArm.position.set(3.28, 0.58, 0.88);
-    rightArm.castShadow = true;
-    sofaGroup.add(rightArm);
+    // Sink Basin Trim
+    const sinkRim = new THREE.Mesh(new THREE.BoxGeometry(1.9, 0.02, 1.5), stainlessSteelMaterial);
+    sinkRim.position.set(1.6, 2.49, -0.6);
+    sinkGroup.add(sinkRim);
 
-    // Lumbar Accent Pillows
-    const pillow1 = new THREE.Mesh(new THREE.BoxGeometry(0.65, 0.4, 0.18), new THREE.MeshStandardMaterial({ color: 0xB85D3D, roughness: 0.85 }));
-    pillow1.position.set(-0.35, 0.72, 0.42);
-    pillow1.rotation.y = 0.15;
-    pillow1.castShadow = true;
-    sofaGroup.add(pillow1);
+    // Main Sink Basin
+    const sinkBasin = new THREE.Mesh(new THREE.BoxGeometry(1.65, 0.01, 1.25), darkMetalMaterial);
+    sinkBasin.position.set(1.6, 2.47, -0.6);
+    sinkGroup.add(sinkBasin);
 
-    const pillow2 = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.75, 20), new THREE.MeshStandardMaterial({ color: 0x4E5B52, roughness: 0.8 }));
-    pillow2.rotation.z = Math.PI / 2;
-    pillow2.position.set(2.6, 0.62, 0.5);
-    pillow2.castShadow = true;
-    sofaGroup.add(pillow2);
+    // Gooseneck Mixer Faucet (Vertical post + curved arched spout)
+    const faucetBase = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.06, 0.55, 16), stainlessSteelMaterial);
+    faucetBase.position.set(1.6, 2.75, -1.25);
+    faucetBase.castShadow = true;
+    sinkGroup.add(faucetBase);
 
-    scene.add(sofaGroup);
+    const faucetArch = new THREE.Mesh(new THREE.TorusGeometry(0.25, 0.035, 12, 24, Math.PI), stainlessSteelMaterial);
+    faucetArch.rotation.z = Math.PI;
+    faucetArch.rotation.y = Math.PI / 2;
+    faucetArch.position.set(1.6, 3.02, -1.0);
+    faucetArch.castShadow = true;
+    sinkGroup.add(faucetArch);
 
-    // --- Travertine Coffee Table ---
-    const tableGroup = new THREE.Group();
+    const faucetLever = new THREE.Mesh(new THREE.BoxGeometry(0.02, 0.16, 0.06), brassMaterial);
+    faucetLever.position.set(1.72, 2.78, -1.25);
+    faucetLever.rotation.z = -0.3;
+    sinkGroup.add(faucetLever);
 
-    // Table Top (Rounded slab)
-    const tableTop = new THREE.Mesh(new THREE.BoxGeometry(2.4, 0.14, 1.2), travertineMaterial);
-    tableTop.position.set(0.8, 0.46, -1.1);
-    tableTop.castShadow = true;
-    tableTop.receiveShadow = true;
-    tableGroup.add(tableTop);
+    kitchenIslandGroup.add(sinkGroup);
 
-    // Table Monolith Cylindrical Legs
-    const tableLeg1 = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.3, 0.38, 32), travertineMaterial);
-    tableLeg1.position.set(0.0, 0.2, -1.1);
-    tableLeg1.castShadow = true;
-    tableGroup.add(tableLeg1);
+    // --- Modular Drawer Compartments (Front Fascia) ---
+    // Top, Middle, Bottom tiers of drawer compartments
+    const drawerFaceMaterial = new THREE.MeshStandardMaterial({
+        color: 0x3E220D,
+        roughness: 0.5,
+        metalness: 0.05
+    });
 
-    const tableLeg2 = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.3, 0.38, 32), travertineMaterial);
-    tableLeg2.position.set(1.6, 0.2, -1.1);
-    tableLeg2.castShadow = true;
-    tableGroup.add(tableLeg2);
+    const handleMaterial = new THREE.MeshStandardMaterial({
+        color: 0xC6A473,
+        roughness: 0.25,
+        metalness: 0.85
+    });
 
-    // Architectural Coffee Table Books
-    const book1 = new THREE.Mesh(new THREE.BoxGeometry(0.48, 0.05, 0.36), new THREE.MeshStandardMaterial({ color: 0x1C1C1A, roughness: 0.5 }));
-    book1.position.set(0.4, 0.56, -1.05);
-    book1.rotation.y = 0.2;
-    book1.castShadow = true;
-    tableGroup.add(book1);
+    const drawerCols = [-2.5, -1.0, 0.6, 2.2];
+    const drawerRows = [1.85, 1.25, 0.6];
+    const drawerHeights = [0.42, 0.42, 0.52];
 
-    const book2 = new THREE.Mesh(new THREE.BoxGeometry(0.42, 0.04, 0.32), new THREE.MeshStandardMaterial({ color: 0xDFDACF, roughness: 0.7 }));
-    book2.position.set(0.42, 0.6, -1.03);
-    book2.rotation.y = 0.08;
-    book2.castShadow = true;
-    tableGroup.add(book2);
+    drawerCols.forEach(colX => {
+        drawerRows.forEach((rowY, rIdx) => {
+            const dFace = new THREE.Mesh(new THREE.BoxGeometry(1.36, drawerHeights[rIdx], 0.05), drawerFaceMaterial);
+            dFace.position.set(colX, rowY, 0.62);
+            dFace.castShadow = true;
+            kitchenIslandGroup.add(dFace);
 
-    // Brass Sculptural Bowl
-    const bowl = new THREE.Mesh(new THREE.CylinderGeometry(0.24, 0.12, 0.1, 24), brassMaterial);
-    bowl.position.set(1.4, 0.57, -1.08);
-    bowl.castShadow = true;
-    tableGroup.add(bowl);
+            // Sleek Horizontal Bar Handle
+            const dHandle = new THREE.Mesh(new THREE.BoxGeometry(0.65, 0.025, 0.04), handleMaterial);
+            dHandle.position.set(colX, rowY + 0.05, 0.66);
+            dHandle.castShadow = true;
+            kitchenIslandGroup.add(dHandle);
+        });
+    });
 
-    scene.add(tableGroup);
+    scene.add(kitchenIslandGroup);
 
-    // --- Mid-Century Modern Floor Lamp ---
+    // --- Overhead Stainless Steel Kitchen Chimney Hood ---
+    const chimneyGroup = new THREE.Group();
+
+    // Broad intake canopy directly over the stove
+    const chimneyCanopy = new THREE.Mesh(new THREE.BoxGeometry(2.6, 0.18, 1.8), stainlessSteelMaterial);
+    chimneyCanopy.position.set(-1.6, 4.8, -0.6);
+    chimneyCanopy.castShadow = true;
+    chimneyGroup.add(chimneyCanopy);
+
+    // Inset baffle grease filters
+    const chimneyFilter = new THREE.Mesh(new THREE.BoxGeometry(2.3, 0.03, 1.5), darkMetalMaterial);
+    chimneyFilter.position.set(-1.6, 4.7, -0.6);
+    chimneyGroup.add(chimneyFilter);
+
+    // Vertical Exhaust Flue Duct to Ceiling
+    const chimneyFlue = new THREE.Mesh(new THREE.BoxGeometry(0.9, 2.6, 0.75), stainlessSteelMaterial);
+    chimneyFlue.position.set(-1.6, 6.1, -0.6);
+    chimneyFlue.castShadow = true;
+    chimneyGroup.add(chimneyFlue);
+
+    scene.add(chimneyGroup);
+
+    // --- Brass Counter Pendant Light (with Physics Support) ---
     const lampGroup = new THREE.Group();
 
-    // Heavy round stone base
-    const lampBase = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.35, 0.08, 32), darkMetalMaterial);
-    lampBase.position.set(-3.2, 0.04, -1.2);
-    lampBase.castShadow = true;
-    lampGroup.add(lampBase);
+    // Suspension ceiling mount & thin cable
+    const lampCord = new THREE.Mesh(new THREE.CylinderGeometry(0.008, 0.008, 2.2, 8), darkMetalMaterial);
+    lampCord.position.set(1.6, 5.8, -0.6);
+    lampGroup.add(lampCord);
 
-    // Slender vertical brass pole
-    const lampPole = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.025, 3.4, 16), brassMaterial);
-    lampPole.position.set(-3.2, 1.7, -1.2);
-    lampPole.castShadow = true;
-    lampGroup.add(lampPole);
-
-    // Conical Linen Shade
+    // Spun Brass Counter Bell Shade directly illuminating the sink & slab
     const lampShade = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.2, 0.42, 0.52, 32, 1, true),
-        new THREE.MeshStandardMaterial({ color: 0xF2EDE4, roughness: 0.85, side: THREE.DoubleSide })
+        new THREE.CylinderGeometry(0.08, 0.38, 0.35, 32, 1, false),
+        brassMaterial
     );
-    lampShade.position.set(-3.2, 3.2, -1.2);
+    lampShade.position.set(1.6, 4.6, -0.6);
     lampShade.castShadow = true;
     lampGroup.add(lampShade);
 
     scene.add(lampGroup);
 
-    // --- Botanical Plant (Ficus / Olive Tree in Terracotta Planter) ---
-    const plantGroup = new THREE.Group();
-
-    // Ceramic Planter
-    const pot = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.32, 0.9, 32), new THREE.MeshStandardMaterial({ color: 0xC87D5D, roughness: 0.8 }));
-    pot.position.set(-4.8, 0.45, 1.8);
-    pot.castShadow = true;
-    pot.receiveShadow = true;
-    plantGroup.add(pot);
-
-    // Trunk
-    const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.07, 2.4, 12), new THREE.MeshStandardMaterial({ color: 0x483C32, roughness: 0.9 }));
-    trunk.position.set(-4.8, 1.6, 1.8);
-    trunk.castShadow = true;
-    plantGroup.add(trunk);
-
-    // Lush Foliage Clusters
-    const leafMaterial = new THREE.MeshStandardMaterial({ color: 0x475647, roughness: 0.7 });
-    for (let i = 0; i < 14; i++) {
-        const leafSphere = new THREE.Mesh(new THREE.SphereGeometry(0.3, 8, 6), leafMaterial);
-        const angle = (i / 14) * Math.PI * 2;
-        const radius = 0.35 + (i % 3) * 0.15;
-        leafSphere.position.set(
-            -4.8 + Math.cos(angle) * radius,
-            2.2 + (i % 4) * 0.35,
-            1.8 + Math.sin(angle) * radius
-        );
-        leafSphere.scale.set(1.2, 0.7, 1.1);
-        leafSphere.castShadow = true;
-        plantGroup.add(leafSphere);
-    }
-    scene.add(plantGroup);
-
-    // --- Framed Minimalist Wall Art ---
-    const artGroup = new THREE.Group();
-    const artFrame = new THREE.Mesh(new THREE.BoxGeometry(2.4, 3.2, 0.08), windowFrameMat);
-    artFrame.position.set(2.4, 3.5, -4.42);
-    artFrame.castShadow = true;
-    artGroup.add(artFrame);
-
-    const artCanvas = new THREE.Mesh(
-        new THREE.BoxGeometry(2.26, 3.06, 0.02),
-        new THREE.MeshStandardMaterial({ map: createArtTexture(), roughness: 0.6 })
-    );
-    artCanvas.position.set(2.4, 3.5, -4.36);
-    artGroup.add(artCanvas);
-    scene.add(artGroup);
+    // Reposition Lamp Spotlight directly onto the cooking slab
+    lampLight.position.set(1.6, 4.4, -0.6);
 
     // --- 3D Interactive Hotspot Pins ---
     const hotspots = [
         {
-            name: 'Modular Lounge',
-            spec: 'Belgian Bouclé & Oiled Walnut Plinth',
-            position: new THREE.Vector3(1.1, 1.5, 0.9),
-            targetId: 'hotspot-sofa'
+            name: 'Quartz Kitchen Slab (Slape)',
+            spec: '20mm Seamless Stain-Proof Nano-White Countertop with Waterfall Edge',
+            position: new THREE.Vector3(0, 2.6, -0.6),
+            targetId: 'hotspot-slab'
         },
         {
-            name: 'Travertine Monolith',
-            spec: 'Honed Roman Travertine Stone Slab',
-            position: new THREE.Vector3(0.8, 0.9, -1.1),
-            targetId: 'hotspot-table'
+            name: 'Built-in 4-Burner Stove Hob',
+            spec: 'Toughened Black Glass with Heavy-Duty Brass Burners & Auto-Ignition',
+            position: new THREE.Vector3(-1.6, 2.7, -0.6),
+            targetId: 'hotspot-stove'
         },
         {
-            name: 'Morrow 02 Floor Lamp',
-            spec: 'Brushed Brass & Natural Linen Shade',
-            position: new THREE.Vector3(-3.2, 3.6, -1.2),
-            targetId: 'hotspot-lamp'
+            name: 'Tandem Drawer Compartments',
+            spec: 'Blum Legrabox Soft-Close with Seasoned Teak Cutlery Organizers',
+            position: new THREE.Vector3(0.6, 1.4, 0.65),
+            targetId: 'hotspot-compartment'
         }
     ];
 
@@ -540,7 +536,6 @@ const initStudio = () => {
             hemiGround: 0x6e6e66,
             hemiIntensity: 1.8,
             lampIntensity: 0,
-            artSpotIntensity: 1.4,
             exposure: 1.05
         },
         dusk: {
@@ -552,7 +547,6 @@ const initStudio = () => {
             hemiGround: 0x4a3a30,
             hemiIntensity: 1.3,
             lampIntensity: 1.8,
-            artSpotIntensity: 2.2,
             exposure: 0.98
         },
         night: {
@@ -564,7 +558,6 @@ const initStudio = () => {
             hemiGround: 0x12131a,
             hemiIntensity: 0.55,
             lampIntensity: 4.8,
-            artSpotIntensity: 3.2,
             exposure: 1.15
         }
     };
@@ -585,57 +578,13 @@ const initStudio = () => {
             hemiLight.groundColor.set(mode.hemiGround);
             hemiLight.intensity = mode.hemiIntensity;
             lampLight.intensity = mode.lampIntensity;
-            artSpot.intensity = mode.artSpotIntensity;
             renderer.toneMappingExposure = mode.exposure;
         });
     });
 
-    // --- Material Customizer (Upholstery & Floor) ---
-    const upholsteryPalette = {
-        boucle: { color: 0xE2DDD4, roughness: 0.9 },
-        sage: { color: 0x58695C, roughness: 0.85 },
-        cognac: { color: 0x8C492B, roughness: 0.4 },
-        charcoal: { color: 0x2A2B27, roughness: 0.75 }
-    };
-
-    document.querySelectorAll('[data-material]').forEach((btn) => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('[data-material]').forEach((b) => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const matConfig = upholsteryPalette[btn.dataset.material];
-            if (matConfig) {
-                sofaMaterial.color.set(matConfig.color);
-                sofaMaterial.roughness = matConfig.roughness;
-            }
-        });
-    });
-
-    // --- Camera Presets with Smooth Interpolation ---
-    const cameraPresets = {
-        overview: { pos: new THREE.Vector3(6.8, 4.2, 8.4), target: new THREE.Vector3(0.2, 1.4, 0) },
-        lounge: { pos: new THREE.Vector3(3.2, 2.2, 3.8), target: new THREE.Vector3(1.1, 0.9, 0.8) },
-        architectural: { pos: new THREE.Vector3(0.2, 2.4, 8.6), target: new THREE.Vector3(0.2, 1.8, 0) },
-        top: { pos: new THREE.Vector3(0.2, 9.2, 0.5), target: new THREE.Vector3(0.2, 0, 0) }
-    };
-
     let targetCamPos = camera.position.clone();
     let targetControlsTarget = controls.target.clone();
     let isTransitioningCam = false;
-
-    document.querySelectorAll('[data-cam]').forEach((btn) => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('[data-cam]').forEach((b) => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const preset = cameraPresets[btn.dataset.cam];
-            if (!preset) return;
-
-            targetCamPos.copy(preset.pos);
-            targetControlsTarget.copy(preset.target);
-            isTransitioningCam = true;
-        });
-    });
 
     // --- Fullscreen Viewport Toggle ---
     const fsBtn = document.querySelector('#toggle-scene-fs');
@@ -729,21 +678,21 @@ const initStudio = () => {
             document.querySelectorAll('[data-3d-room]').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             const room = btn.dataset['3dRoom'] || btn.getAttribute('data-3d-room');
-            if (room === 'living') {
+            if (room === 'island') {
                 targetCamPos.set(6.8, 4.2, 8.4);
                 targetControlsTarget.set(0.2, 1.4, 0);
                 isTransitioningCam = true;
-                if (window.showToast) window.showToast('Switched to Living Room 3D Showcase');
-            } else if (room === 'kitchen') {
+                if (window.showToast) window.showToast('Switched to Island Kitchen 3D Showcase');
+            } else if (room === 'lshape') {
                 targetCamPos.set(0.2, 2.8, 5.5);
                 targetControlsTarget.set(0, 1.2, -1.0);
                 isTransitioningCam = true;
-                if (window.showToast) window.showToast('Switched to Modular Kitchen 3D Showcase');
-            } else if (room === 'bedroom') {
+                if (window.showToast) window.showToast('Switched to L-Shape Corner 3D Showcase');
+            } else if (room === 'parallel') {
                 targetCamPos.set(-3.5, 3.2, 4.5);
                 targetControlsTarget.set(1.0, 1.0, 0);
                 isTransitioningCam = true;
-                if (window.showToast) window.showToast('Switched to Master Bedroom Suite 3D Showcase');
+                if (window.showToast) window.showToast('Switched to Parallel Galley 3D Showcase');
             }
         });
     });
@@ -759,10 +708,10 @@ const initStudio = () => {
         if (lightPhysicsActive) {
             const swing = Math.sin(elapsedTime * 2.2) * 0.12;
             lampGroup.rotation.z = THREE.MathUtils.lerp(lampGroup.rotation.z, swing, 0.1);
-            lampLight.position.x = -3.2 + Math.sin(lampGroup.rotation.z) * 1.2;
+            lampLight.position.x = 1.6 + Math.sin(lampGroup.rotation.z) * 1.2;
         } else {
             lampGroup.rotation.z = THREE.MathUtils.lerp(lampGroup.rotation.z, 0, 0.08);
-            lampLight.position.x = THREE.MathUtils.lerp(lampLight.position.x, -3.2, 0.08);
+            lampLight.position.x = THREE.MathUtils.lerp(lampLight.position.x, 1.6, 0.08);
         }
 
         // Hotspots gentle bobbing animation

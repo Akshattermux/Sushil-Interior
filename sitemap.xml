@@ -4,20 +4,20 @@
   <!-- Homepage -->
   <url>
     <loc>https://sushilinterior.com/</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&amp;fit=crop&amp;w=1600&amp;q=85</image:loc>
-      <image:title>Sushil Interior Saharanpur Teak Wood Living Room</image:title>
-      <image:caption>Handcrafted bespoke wooden interior and turnkey residential architecture</image:caption>
+      <image:loc>https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&amp;fit=crop&amp;w=1600&amp;q=85</image:loc>
+      <image:title>Sushil Interior Modular Kitchen Accessories &amp; Slabs</image:title>
+      <image:caption>Bespoke quartz slabs, built-in stoves, and modular kitchen compartments</image:caption>
     </image:image>
   </url>
 
   <!-- Interior Showcase Entrypoint -->
   <url>
     <loc>https://sushilinterior.com/Interior.html</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -25,13 +25,13 @@
   <!-- About Page -->
   <url>
     <loc>https://sushilinterior.com/about.html</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
-      <image:loc>https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&amp;fit=crop&amp;w=1200&amp;q=85</image:loc>
-      <image:title>Sushil Interior Woodcraft Workshop Saharanpur</image:title>
-      <image:caption>Master craftsmen working with seasoned CP Teak and Sheesham wood</image:caption>
+      <image:loc>https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&amp;fit=crop&amp;w=1200&amp;q=85</image:loc>
+      <image:title>Sushil Interior Modular Kitchen Workshop Saharanpur</image:title>
+      <image:caption>Master artisans fabricating modular kitchen compartments, slabs, and hardware</image:caption>
     </image:image>
   </url>
 </urlset>

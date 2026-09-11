@@ -1,104 +1,349 @@
 /**
- * SUSHIL INTERIOR — CLIENT-SIDE INTERACTION ENGINE
- * Saharanpur, UP (India)
- * Features: First-Page Hero Showcase Slider, Order Listing Cart, Room Tabs, AR View Controller
- * Clean & Production-Grade (Zero audio/music bloat, zero intrusive timers)
+ * SUSHIL INTERIOR — MASTER CLIENT-SIDE ENGINE
+ * Saharanpur & Dehradun
+ * Specialization: Kitchen Appliances, Gas Hobs, Cutlery Organizers, Slabs (Slape)
+ * Production-Grade: Fast, Accessible, No audio bloat, No intrusive timers
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Enable smooth reveal animations progressively
-    document.body.classList.add('js-reveal-active');
-
     // ==========================================================================
-    // 1. First-Page Hero Showcase Slider
+    // 1. Dynamic Typed.js Text Rotator
     // ==========================================================================
-    const initHeroSlider = () => {
-        const sliderWrap = document.querySelector('#hero-slider-wrap');
-        const slides = document.querySelectorAll('.hero-slide');
-        const prevBtn = document.querySelector('#hero-slider-prev');
-        const nextBtn = document.querySelector('#hero-slider-next');
-        const dotsContainer = document.querySelector('#hero-slider-dots');
-
-        if (!sliderWrap || slides.length === 0) return;
-
-        let currentSlide = 0;
-        let autoPlayInterval = null;
-
-        // Build dots
-        if (dotsContainer) {
-            dotsContainer.innerHTML = '';
-            slides.forEach((_, idx) => {
-                const dot = document.createElement('button');
-                dot.className = 'hero-slider-dot' + (idx === 0 ? ' active' : '');
-                dot.setAttribute('aria-label', `Go to slide ${idx + 1}`);
-                dot.addEventListener('click', () => goToSlide(idx));
-                dotsContainer.appendChild(dot);
+    const initTyped = () => {
+        const typedEl = document.querySelector('#typed-kitchen-text');
+        if (typedEl && typeof Typed !== 'undefined') {
+            new Typed('#typed-kitchen-text', {
+                strings: [
+                    'Built-in Brass Gas Stoves &amp; Hobs',
+                    'Handcrafted CP Teak Cutlery Compartments',
+                    'Motion-Sensor Baffle Chimneys',
+                    'Calibrated Quartz &amp; Granite Slabs (Slape)',
+                    'Smart Convection Built-in Ovens',
+                    'Articulated Blind Corner LeMans Trays'
+                ],
+                typeSpeed: 45,
+                backSpeed: 25,
+                backDelay: 2000,
+                loop: true,
+                showCursor: true,
+                cursorChar: '|'
             });
         }
+    };
+    initTyped();
 
-        const updateDots = () => {
-            const dots = dotsContainer ? dotsContainer.querySelectorAll('.hero-slider-dot') : [];
-            dots.forEach((dot, idx) => {
-                dot.classList.toggle('active', idx === currentSlide);
+    // ==========================================================================
+    // 2. Header, Navigation & Mobile Menu
+    // ==========================================================================
+    const header = document.querySelector('#site-header');
+    const menuToggle = document.querySelector('#mobile-menu-toggle');
+    const mobileDrawer = document.querySelector('#mobile-drawer');
+    const backToTopBtn = document.querySelector('#back-to-top');
+
+    // Sticky Header Scroll Effect
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        if (header) {
+            header.classList.toggle('scrolled', scrolled > 30);
+        }
+        if (backToTopBtn) {
+            backToTopBtn.classList.toggle('visible', scrolled > 500);
+        }
+    }, { passive: true });
+
+    if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // Mobile Menu Toggle
+    if (menuToggle && mobileDrawer) {
+        menuToggle.addEventListener('click', () => {
+            const isOpen = mobileDrawer.classList.toggle('open');
+            menuToggle.classList.toggle('open', isOpen);
+            menuToggle.setAttribute('aria-expanded', String(isOpen));
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+            link.addEventListener('click', () => {
+                mobileDrawer.classList.remove('open');
+                menuToggle.classList.remove('open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
             });
+        });
+    }
+
+    // Active Navigation Highlighting on Scroll
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const updateActiveNav = () => {
+        const scrollPos = window.scrollY + 120;
+        sections.forEach((sec) => {
+            const top = sec.offsetTop;
+            const height = sec.offsetHeight;
+            const id = sec.getAttribute('id');
+            if (scrollPos >= top && scrollPos < top + height) {
+                navLinks.forEach((link) => {
+                    link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+                });
+            }
+        });
+    };
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
+
+    // ==========================================================================
+    // 3. Theme Toggle (Light / Twilight Wood Mode)
+    // ==========================================================================
+    const themeBtn = document.querySelector('#theme-toggle');
+    const savedTheme = localStorage.getItem('si_theme') || 'light';
+
+    const setTheme = (theme) => {
+        if (theme === 'twilight') {
+            document.documentElement.setAttribute('data-theme', 'twilight');
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+        }
+        localStorage.setItem('si_theme', theme);
+    };
+    setTheme(savedTheme);
+
+    if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+            const isTwilight = document.documentElement.getAttribute('data-theme') === 'twilight';
+            const nextTheme = isTwilight ? 'light' : 'twilight';
+            setTheme(nextTheme);
+            showToast(nextTheme === 'twilight' ? 'Twilight Wood Theme Activated' : 'Natural Light Theme Activated');
+        });
+    }
+
+    // ==========================================================================
+    // 4. Interior Gallery Slider
+    // ==========================================================================
+    const initGallerySlider = () => {
+        const slides = [...document.querySelectorAll('.interior-slide')];
+        const countEl = document.querySelector('#slide-count');
+        const progressBar = document.querySelector('#slider-progress-bar');
+        const prevBtn = document.querySelector('#previous-slide');
+        const nextBtn = document.querySelector('#next-slide');
+        const sliderContainer = document.querySelector('.interior-slider');
+
+        if (slides.length === 0 || !sliderContainer) return;
+
+        let current = 0;
+        let slideTimer = null;
+
+        const updateSlide = (idx) => {
+            current = (idx + slides.length) % slides.length;
+            slides.forEach((s, i) => s.classList.toggle('active', i === current));
+            if (countEl) countEl.textContent = `0${current + 1} / 0${slides.length}`;
+            if (progressBar) progressBar.style.transform = `translateX(${current * 100}%)`;
         };
 
-        const goToSlide = (idx) => {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (idx + slides.length) % slides.length;
-            slides[currentSlide].classList.add('active');
-            updateDots();
-        };
-
-        const nextSlide = () => goToSlide(currentSlide + 1);
-        const prevSlide = () => goToSlide(currentSlide - 1);
+        const nextSlide = () => updateSlide(current + 1);
+        const prevSlide = () => updateSlide(current - 1);
 
         if (nextBtn) nextBtn.addEventListener('click', nextSlide);
         if (prevBtn) prevBtn.addEventListener('click', prevSlide);
 
         // Autoplay
-        const startAutoPlay = () => {
-            stopAutoPlay();
-            autoPlayInterval = setInterval(nextSlide, 5000);
+        const startAutoplay = () => {
+            stopAutoplay();
+            slideTimer = setInterval(nextSlide, 5500);
+        };
+        const stopAutoplay = () => {
+            if (slideTimer) clearInterval(slideTimer);
         };
 
-        const stopAutoPlay = () => {
-            if (autoPlayInterval) clearInterval(autoPlayInterval);
-        };
+        sliderContainer.addEventListener('mouseenter', stopAutoplay);
+        sliderContainer.addEventListener('mouseleave', startAutoplay);
+        startAutoplay();
 
-        sliderWrap.addEventListener('mouseenter', stopAutoPlay);
-        sliderWrap.addEventListener('mouseleave', startAutoPlay);
-        startAutoPlay();
-
-        // Touch swipe support
-        let touchStartX = 0;
-        sliderWrap.addEventListener('touchstart', (e) => {
-            touchStartX = e.touches[0].clientX;
+        // Touch Swipe
+        let startX = 0, startY = 0;
+        sliderContainer.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
         }, { passive: true });
 
-        sliderWrap.addEventListener('touchend', (e) => {
-            const diff = touchStartX - e.changedTouches[0].clientX;
-            if (Math.abs(diff) > 40) {
-                if (diff > 0) nextSlide();
+        sliderContainer.addEventListener('touchend', (e) => {
+            const deltaX = startX - e.changedTouches[0].clientX;
+            const deltaY = startY - e.changedTouches[0].clientY;
+            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 35) {
+                if (deltaX > 0) nextSlide();
                 else prevSlide();
             }
         }, { passive: true });
+
+        updateSlide(0);
     };
-    initHeroSlider();
+    initGallerySlider();
 
     // ==========================================================================
-    // 3. Order Listing System & Quote Basket
+    // 5. Product Catalog Filter Tabs & Consultation Bridge
+    // ==========================================================================
+    const tabButtons = document.querySelectorAll('.catalog-tab-btn');
+    const productCards = document.querySelectorAll('.catalog-card');
+
+    tabButtons.forEach((tab) => {
+        tab.addEventListener('click', () => {
+            tabButtons.forEach((t) => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            const filter = tab.dataset.filter;
+            productCards.forEach((card) => {
+                const match = filter === 'all' || card.dataset.category === filter;
+                card.style.display = match ? 'flex' : 'none';
+            });
+        });
+    });
+
+    // "Ask Studio" Consultation Buttons
+    document.querySelectorAll('.product-consult-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const productName = btn.dataset.product;
+            const messageField = document.querySelector('#field-message');
+            const serviceField = document.querySelector('#field-service');
+            const consultationSec = document.querySelector('#consultation');
+
+            if (serviceField) {
+                serviceField.value = 'kitchen-accessories';
+            }
+            if (messageField) {
+                messageField.value = `Hello Sushil Interior team,\nI am interested in the "${productName}". Please provide availability, technical specifications, and on-site setup estimate for Saharanpur/Dehradun.`;
+            }
+            if (consultationSec) {
+                consultationSec.scrollIntoView({ behavior: 'smooth' });
+            }
+            showToast(`Inquiring about ${productName}`);
+        });
+    });
+
+    // ==========================================================================
+    // 6. Interactive Cutlery Drawer Configurator Studio
+    // ==========================================================================
+    const initDrawerStudio = () => {
+        const visualBox = document.querySelector('#drawer-visual-box');
+        const slotsContainer = document.querySelector('#drawer-slots-container');
+        const widthLabel = document.querySelector('#drawer-width-label');
+        const totalPriceEl = document.querySelector('#drawer-total-price');
+        const widthButtons = document.querySelectorAll('[data-drawer-width]');
+        const checkboxes = document.querySelectorAll('.insert-checkbox-row input');
+        const addConfiguredBtn = document.querySelector('#add-configured-drawer-btn');
+
+        if (!visualBox || !slotsContainer) return;
+
+        let currentWidth = 600;
+
+        const basePrices = {
+            450: 3400,
+            600: 3800,
+            900: 4800
+        };
+
+        const updateDrawer = () => {
+            visualBox.setAttribute('data-width', currentWidth);
+            if (widthLabel) {
+                const labelText = currentWidth === 450 ? '450 mm (Compact Tandembox)' : currentWidth === 900 ? '900 mm (Wide Island Drawer)' : '600 mm (Standard Blum Tandembox)';
+                widthLabel.textContent = `Drawer Width: ${labelText}`;
+            }
+
+            let total = basePrices[currentWidth] || 3800;
+            const activeInserts = [];
+
+            slotsContainer.innerHTML = '';
+
+            checkboxes.forEach((cb) => {
+                if (cb.checked) {
+                    const name = cb.dataset.addonName;
+                    const price = parseInt(cb.dataset.addonPrice, 10) || 0;
+                    total += price;
+                    activeInserts.push({ name, price });
+
+                    // Add simulated visual slot
+                    const slot = document.createElement('div');
+                    slot.className = 'drawer-slot-item';
+
+                    // Assign grid spans based on insert type
+                    if (cb.id === 'insert-cutlery') {
+                        slot.style.gridColumn = currentWidth === 900 ? 'span 3' : 'span 3';
+                        slot.style.gridRow = 'span 2';
+                        slot.innerHTML = `<strong>🍴 Cutlery Tray</strong><span>Spoons &amp; Forks</span>`;
+                    } else if (cb.id === 'insert-knife') {
+                        slot.style.gridColumn = currentWidth === 900 ? 'span 3' : 'span 3';
+                        slot.style.gridRow = 'span 2';
+                        slot.innerHTML = `<strong>🔪 Knife Rest</strong><span>6 Chef Blades</span>`;
+                    } else if (cb.id === 'insert-spice') {
+                        slot.style.gridColumn = currentWidth === 900 ? 'span 3' : 'span 3';
+                        slot.style.gridRow = 'span 2';
+                        slot.innerHTML = `<strong>🌶️ Masala Steps</strong><span>12 Spice Jars</span>`;
+                    } else if (cb.id === 'insert-belan') {
+                        slot.style.gridColumn = currentWidth === 900 ? 'span 3' : 'span 3';
+                        slot.style.gridRow = 'span 2';
+                        slot.innerHTML = `<strong>🫓 Chakla-Belan</strong><span>Circular Dock</span>`;
+                    } else if (cb.id === 'insert-foil') {
+                        slot.style.gridColumn = 'span 6';
+                        slot.style.gridRow = 'span 1';
+                        slot.innerHTML = `<strong>📜 Foil &amp; Cling</strong><span>Sliding Cutter</span>`;
+                    }
+                    slotsContainer.appendChild(slot);
+                }
+            });
+
+            if (totalPriceEl) {
+                totalPriceEl.textContent = `₹${total.toLocaleString('en-IN')}`;
+            }
+
+            return { total, activeInserts };
+        };
+
+        widthButtons.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                widthButtons.forEach((b) => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentWidth = parseInt(btn.dataset.drawerWidth, 10);
+                updateDrawer();
+            });
+        });
+
+        checkboxes.forEach((cb) => {
+            cb.addEventListener('change', updateDrawer);
+        });
+
+        if (addConfiguredBtn) {
+            addConfiguredBtn.addEventListener('click', () => {
+                const { total, activeInserts } = updateDrawer();
+                const insertNames = activeInserts.map((i) => i.name).join(', ');
+                orderEngine.addItem({
+                    id: 'custom-drawer-' + Date.now(),
+                    name: `Custom ${currentWidth}mm Teak Drawer Setup`,
+                    wood: `Seasoned CP Teak (${currentWidth}mm Width)`,
+                    price: total,
+                    image: 'https://images.unsplash.com/photo-1590794056226-79ef3a8147e1?auto=format&fit=crop&w=400&q=80',
+                    details: insertNames
+                });
+            });
+        }
+
+        updateDrawer();
+    };
+    initDrawerStudio();
+
+    // ==========================================================================
+    // 7. Order Listing System & Quote Basket Drawer Engine
     // ==========================================================================
     class OrderListingEngine {
         constructor() {
             this.items = JSON.parse(localStorage.getItem('si_order_items')) || [
                 {
                     id: 'item-1',
-                    name: 'Royal Saharanpur Teak Dining Set',
-                    wood: 'Natural CP Teak',
-                    price: 145000,
+                    name: 'Handcrafted CP Teak Cutlery Tray',
+                    wood: 'Seasoned CP Teak',
+                    price: 4800,
                     qty: 1,
-                    image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=300&q=80'
+                    image: 'https://images.unsplash.com/photo-1590794056226-79ef3a8147e1?auto=format&fit=crop&w=400&q=80'
                 }
             ];
 
@@ -108,6 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.totalEl = document.querySelector('#order-total-val');
             this.pincodeInput = document.querySelector('#pincode-input');
             this.pincodeBtn = document.querySelector('#pincode-btn');
+            this.pincodeStatus = document.querySelector('#pincode-status');
             this.orderSubmitBtn = document.querySelector('#order-submit-btn');
 
             this.initListeners();
@@ -125,17 +371,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 existing.qty += 1;
             } else {
                 this.items.push({
-                    id: 'item-' + Date.now(),
+                    id: product.id || 'item-' + Date.now(),
                     name: product.name,
-                    wood: product.wood || 'Natural CP Teak',
+                    wood: product.wood || 'Standard Finish',
                     price: product.price,
                     qty: 1,
-                    image: product.image
+                    image: product.image || 'assets/kitchen-appliances-hero.png'
                 });
             }
             this.save();
             this.openDrawer();
-            showToast(`Added "${product.name}" to inquiry basket`);
+            showToast(`Added "${product.name}" to Quote Basket`);
         }
 
         removeItem(id) {
@@ -150,14 +396,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (item.qty <= 0) {
                 this.removeItem(id);
             } else {
-                this.save();
-            }
-        }
-
-        updateFinish(id, newWood) {
-            const item = this.items.find((i) => i.id === id);
-            if (item) {
-                item.wood = newWood;
                 this.save();
             }
         }
@@ -179,96 +417,84 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         initListeners() {
+            // Cart openers
             document.querySelectorAll('[data-open-cart]').forEach((btn) => {
                 btn.addEventListener('click', () => this.openDrawer());
             });
 
+            // Cart closers
             document.querySelectorAll('[data-close-cart]').forEach((btn) => {
                 btn.addEventListener('click', () => this.closeDrawer());
             });
 
-            // Add to Order buttons
-            document.querySelectorAll('.add-to-order-btn').forEach((btn) => {
+            // Add to basket buttons in catalog cards
+            document.querySelectorAll('.add-basket-btn').forEach((btn) => {
                 btn.addEventListener('click', () => {
-                    const card = btn.closest('.catalog-item-card, .room-card');
-                    if (!card) return;
-
-                    const titleEl = card.querySelector('.catalog-item-title, .room-card-title');
-                    const priceEl = card.querySelector('.catalog-price, .room-card-price');
-                    const imgEl = card.querySelector('img');
-
-                    if (!titleEl || !priceEl || !imgEl) return;
-
-                    const title = titleEl.textContent.trim();
-                    const priceStr = priceEl.textContent.replace(/[^0-9]/g, '');
-
                     this.addItem({
-                        name: title,
-                        price: parseInt(priceStr, 10) || 50000,
-                        wood: 'Natural CP Teak',
-                        image: imgEl.src
+                        id: btn.dataset.id,
+                        name: btn.dataset.name,
+                        wood: btn.dataset.finish,
+                        price: parseInt(btn.dataset.price, 10),
+                        image: btn.dataset.img
                     });
                 });
             });
 
-            // Pincode Delivery Estimator
+            // Pincode Check
             if (this.pincodeBtn && this.pincodeInput) {
                 this.pincodeBtn.addEventListener('click', () => {
                     const pin = this.pincodeInput.value.trim();
-                    if (!/^\d{6}$/.test(pin)) {
-                        showToast('Please enter a valid 6-digit Indian PIN code');
-                        return;
-                    }
+                    if (!this.pincodeStatus) return;
 
-                    if (pin.startsWith('247')) {
-                        showToast(`Pincode ${pin}: Saharanpur Studio local — direct workshop inspection & express delivery!`);
-                    } else if (pin.startsWith('248')) {
-                        showToast(`Pincode ${pin}: Dehradun Studio local — direct architectural consultation & white-glove setup.`);
+                    if (/^247\d{3}$/.test(pin) || /^248\d{3}$/.test(pin) || /^249\d{3}$/.test(pin)) {
+                        this.pincodeStatus.innerHTML = '<span style="color: #4CAF50; font-weight: 600;">✓ Direct White-Glove On-Site Setup Available in Saharanpur &amp; Dehradun</span>';
+                    } else if (/^\d{6}$/.test(pin)) {
+                        this.pincodeStatus.innerHTML = '<span style="color: var(--color-terracotta); font-weight: 600;">✓ Insured Timber Crate Road Logistics Available</span>';
                     } else {
-                        showToast(`Pincode ${pin}: Saharanpur & Dehradun studio team dispatch with insured timber crates.`);
+                        this.pincodeStatus.innerHTML = '<span style="color: #E53935;">Please enter a valid 6-digit Indian PIN code.</span>';
                     }
                 });
             }
 
-            // Order Inquiry Generator & Consultation Prefill
+            // Transfer Cart to Consultation Inquiry Form
             if (this.orderSubmitBtn) {
                 this.orderSubmitBtn.addEventListener('click', () => {
                     if (this.items.length === 0) {
-                        showToast('Your order inquiry list is empty. Add items first.');
+                        showToast('Quote basket is empty');
                         return;
                     }
 
-                    let message = `Requested Bespoke Furniture Scope:\n`;
-                    let grandTotal = 0;
+                    let message = `Kitchen Quote Basket Items:\n`;
+                    let total = 0;
                     this.items.forEach((item, index) => {
                         const sub = item.price * item.qty;
-                        grandTotal += sub;
-                        message += `${index + 1}. ${item.name} (${item.wood}) x${item.qty} - ₹${sub.toLocaleString('en-IN')}\n`;
+                        total += sub;
+                        message += `${index + 1}. ${item.name} (${item.wood}) x ${item.qty} = ₹${sub.toLocaleString('en-IN')}\n`;
                     });
+                    message += `Total Estimated Quote: ₹${total.toLocaleString('en-IN')}\n`;
 
-                    message += `Total Estimated Investment: ₹${grandTotal.toLocaleString('en-IN')}\n`;
                     const pin = this.pincodeInput ? this.pincodeInput.value.trim() : '';
-                    if (pin) message += `Delivery Pincode: ${pin}\n`;
-                    message += `Please provide formal quotation and wood finishing schedule.`;
+                    if (pin) message += `Delivery PIN Code: ${pin}\n`;
+                    message += `Please verify item dimensions and send formal invoice.`;
 
                     const messageField = document.querySelector('#field-message');
                     if (messageField) {
                         messageField.value = message;
                     }
 
-                    this.closeCart();
-                    const contactSection = document.querySelector('#contact');
-                    if (contactSection) {
-                        contactSection.scrollIntoView({ behavior: 'smooth' });
+                    this.closeDrawer();
+                    const consultationSec = document.querySelector('#consultation');
+                    if (consultationSec) {
+                        consultationSec.scrollIntoView({ behavior: 'smooth' });
                     }
-                    showToast('Order items populated in consultation inquiry below!');
+                    showToast('Basket transferred to consultation form below!');
                 });
             }
         }
 
         render() {
-            const count = this.items.reduce((sum, item) => sum + item.qty, 0);
-            if (this.badge) this.badge.textContent = count;
+            const count = this.items.reduce((acc, item) => acc + item.qty, 0);
+            if (this.badge) this.badge.textContent = String(count);
 
             if (!this.listEl) return;
             this.listEl.innerHTML = '';
@@ -277,9 +503,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (this.items.length === 0) {
                 this.listEl.innerHTML = `
-                    <div style="text-align: center; padding: 40px 20px; color: var(--color-ink-muted);">
-                        <p style="font-family: var(--font-serif); font-size: 18px; margin-bottom: 8px;">Your inquiry list is empty</p>
-                        <p style="font-size: 13px;">Explore our handcrafted Saharanpur collections below to add items.</p>
+                    <div style="text-align: center; padding: 48px 20px; color: var(--color-ink-muted);">
+                        <p style="font-family: var(--font-serif); font-size: 18px; margin-bottom: 8px;">Your Quote Basket is Empty</p>
+                        <p style="font-size: 13px;">Browse built-in hobs, teak cutlery trays, and countertop slabs to add items.</p>
                     </div>
                 `;
             } else {
@@ -287,167 +513,91 @@ document.addEventListener('DOMContentLoaded', () => {
                     const subtotal = item.price * item.qty;
                     grandTotal += subtotal;
 
-                    const row = document.createElement('div');
-                    row.className = 'order-item-card';
-                    row.innerHTML = `
+                    const card = document.createElement('div');
+                    card.className = 'order-item-card';
+                    card.innerHTML = `
                         <img class="order-item-img" src="${item.image}" alt="${item.name}">
                         <div class="order-item-details">
                             <h4 class="order-item-name">${item.name}</h4>
-                            <select class="order-item-finish-select" data-finish-id="${item.id}">
-                                <option value="Natural CP Teak" ${item.wood === 'Natural CP Teak' ? 'selected' : ''}>Natural CP Teak</option>
-                                <option value="Indian Rosewood (Sheesham)" ${item.wood === 'Indian Rosewood (Sheesham)' ? 'selected' : ''}>Indian Rosewood (Sheesham)</option>
-                                <option value="Smoked Walnut" ${item.wood === 'Smoked Walnut' ? 'selected' : ''}>Smoked Walnut</option>
-                                <option value="Honey Teak Finish" ${item.wood === 'Honey Teak Finish' ? 'selected' : ''}>Honey Teak Finish</option>
-                            </select>
-                            <span class="order-item-price">₹${subtotal.toLocaleString('en-IN')}</span>
+                            <span class="order-item-finish">${item.wood}</span>
+                            <div class="order-item-price">₹${subtotal.toLocaleString('en-IN')}</div>
                         </div>
                         <div class="order-item-actions">
                             <div class="qty-stepper">
-                                <button class="qty-btn" data-qty-dec="${item.id}">−</button>
+                                <button class="qty-btn" data-dec="${item.id}">−</button>
                                 <span class="qty-val">${item.qty}</span>
-                                <button class="qty-btn" data-qty-inc="${item.id}">+</button>
+                                <button class="qty-btn" data-inc="${item.id}">+</button>
                             </div>
                             <button class="order-item-remove" data-remove="${item.id}">Remove</button>
                         </div>
                     `;
 
-                    row.querySelector('[data-finish-id]').addEventListener('change', (e) => {
-                        this.updateFinish(item.id, e.target.value);
-                    });
+                    card.querySelector('[data-dec]').addEventListener('click', () => this.updateQty(item.id, -1));
+                    card.querySelector('[data-inc]').addEventListener('click', () => this.updateQty(item.id, 1));
+                    card.querySelector('[data-remove]').addEventListener('click', () => this.removeItem(item.id));
 
-                    row.querySelector('[data-qty-dec]').addEventListener('click', () => this.updateQty(item.id, -1));
-                    row.querySelector('[data-qty-inc]').addEventListener('click', () => this.updateQty(item.id, 1));
-                    row.querySelector('[data-remove]').addEventListener('click', () => this.removeItem(item.id));
-
-                    this.listEl.appendChild(row);
+                    this.listEl.appendChild(card);
                 });
             }
 
             if (this.totalEl) {
                 this.totalEl.textContent = `₹${grandTotal.toLocaleString('en-IN')}`;
             }
-
-            if (window.attachHoverListeners) window.attachHoverListeners();
         }
     }
 
     const orderEngine = new OrderListingEngine();
 
     // ==========================================================================
-    // 4. Whole House Room Category Tab Filter
-    // ==========================================================================
-    const roomTabs = document.querySelectorAll('.room-tab-btn');
-    const roomCards = document.querySelectorAll('.room-card');
-
-    roomTabs.forEach((tab) => {
-        tab.addEventListener('click', () => {
-            roomTabs.forEach((t) => t.classList.remove('active'));
-            tab.classList.add('active');
-
-            const filter = tab.dataset.room;
-            roomCards.forEach((card) => {
-                const match = filter === 'all' || card.dataset.roomType === filter;
-                card.style.display = match ? 'flex' : 'none';
-            });
-        });
-    });
-
-    // ==========================================================================
-    // 5. Before & After Renovation Slider
-    // ==========================================================================
-    const initBeforeAfter = () => {
-        const wrapper = document.querySelector('.before-after-wrapper');
-        const overlay = document.querySelector('.before-after-overlay');
-        const handle = document.querySelector('.slider-handle');
-        if (!wrapper || !overlay || !handle) return;
-
-        let isDragging = false;
-
-        const updatePosition = (clientX) => {
-            const rect = wrapper.getBoundingClientRect();
-            const x = clientX - rect.left;
-            let percentage = (x / rect.width) * 100;
-            percentage = Math.max(2, Math.min(98, percentage));
-            overlay.style.width = `${percentage}%`;
-            handle.style.left = `${percentage}%`;
-        };
-
-        wrapper.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            updatePosition(e.clientX);
-        });
-
-        window.addEventListener('mousemove', (e) => {
-            if (isDragging) updatePosition(e.clientX);
-        });
-
-        window.addEventListener('mouseup', () => { isDragging = false; });
-
-        wrapper.addEventListener('touchstart', (e) => {
-            isDragging = true;
-            updatePosition(e.touches[0].clientX);
-        }, { passive: true });
-
-        window.addEventListener('touchmove', (e) => {
-            if (isDragging) updatePosition(e.touches[0].clientX);
-        }, { passive: true });
-
-        window.addEventListener('touchend', () => { isDragging = false; });
-    };
-    initBeforeAfter();
-
-    // ==========================================================================
-    // 6. Design Scope & Cost Estimator (INR / Lakhs)
+    // 8. Instant Kitchen Cost & Appliance Estimator
     // ==========================================================================
     const initEstimator = () => {
         const estimator = document.querySelector('#project-estimator');
         if (!estimator) return;
 
-        const scopeChoices = estimator.querySelectorAll('[data-step="scope"] .estimator-choice');
-        const sizeChoices = estimator.querySelectorAll('[data-step="size"] .estimator-choice');
-        const timelineChoices = estimator.querySelectorAll('[data-step="timeline"] .estimator-choice');
+        const slabButtons = estimator.querySelectorAll('[data-step="slab"] .estimator-choice');
+        const stoveButtons = estimator.querySelectorAll('[data-step="stove"] .estimator-choice');
+        const compButtons = estimator.querySelectorAll('[data-step="compartments"] .estimator-choice');
+        const chimneyButtons = estimator.querySelectorAll('[data-step="chimney"] .estimator-choice');
 
         const readoutInvestment = estimator.querySelector('#est-investment');
         const readoutDuration = estimator.querySelector('#est-duration');
         const prefillBtn = estimator.querySelector('#est-prefill');
 
-        let currentScope = 'full';
-        let currentSize = 'medium';
-        let currentTimeline = 'standard';
+        let currentSlab = 'quartz';
+        let currentStove = '4burner';
+        let currentComp = 'tandem';
+        let currentChimney = 'motion';
 
         const calculate = () => {
-            let minLakh = 14;
-            let maxLakh = 32;
-            let weeksMin = 10;
-            let weeksMax = 18;
+            let slabMin = 48000, slabMax = 75000;
+            if (currentSlab === 'granite') { slabMin = 35000; slabMax = 58000; }
+            else if (currentSlab === 'porcelain') { slabMin = 70000; slabMax = 120000; }
 
-            if (currentScope === 'kitchen') {
-                minLakh = 4.5;
-                maxLakh = 9.5;
-                weeksMin = 4;
-                weeksMax = 7;
-            } else if (currentScope === 'villa') {
-                minLakh = 35;
-                maxLakh = 85;
-                weeksMin = 18;
-                weeksMax = 32;
-            }
+            let stoveMin = 18400, stoveMax = 24000;
+            if (currentStove === '3burner') { stoveMin = 14200; stoveMax = 18000; }
+            else if (currentStove === 'hybrid') { stoveMin = 28000; stoveMax = 38000; }
 
-            if (currentSize === 'small') {
-                minLakh = Math.round(minLakh * 0.75 * 10) / 10;
-                maxLakh = Math.round(maxLakh * 0.75 * 10) / 10;
-            } else if (currentSize === 'large') {
-                minLakh = Math.round(minLakh * 1.5 * 10) / 10;
-                maxLakh = Math.round(maxLakh * 1.7 * 10) / 10;
-                weeksMin += 4;
-                weeksMax += 8;
-            }
+            let compMin = 85000, compMax = 135000;
+            let durationMin = 3, durationMax = 4;
+            if (currentComp === 'standard') { compMin = 45000; compMax = 70000; durationMin = 2; durationMax = 3; }
+            else if (currentComp === 'bespoke') { compMin = 160000; compMax = 280000; durationMin = 4; durationMax = 5; }
+
+            let chimneyMin = 19500, chimneyMax = 26000;
+            if (currentChimney === 'curved') { chimneyMin = 14000; chimneyMax = 20000; }
+            else if (currentChimney === 'island') { chimneyMin = 28000; chimneyMax = 42000; }
+
+            const totalMin = slabMin + stoveMin + compMin + chimneyMin;
+            const totalMax = slabMax + stoveMax + compMax + chimneyMax;
+
+            const minLakh = (totalMin / 100000).toFixed(2);
+            const maxLakh = (totalMax / 100000).toFixed(2);
 
             if (readoutInvestment) readoutInvestment.textContent = `₹${minLakh} Lakhs — ₹${maxLakh} Lakhs`;
-            if (readoutDuration) readoutDuration.textContent = `${weeksMin} — ${weeksMax} Weeks`;
+            if (readoutDuration) readoutDuration.textContent = `${durationMin} — ${durationMax} Weeks`;
         };
 
-        const setupStep = (buttons, onSelect) => {
+        const bindStep = (buttons, onSelect) => {
             buttons.forEach((btn) => {
                 btn.addEventListener('click', () => {
                     buttons.forEach((b) => b.classList.remove('selected'));
@@ -458,170 +608,296 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         };
 
-        setupStep(scopeChoices, (val) => { currentScope = val; });
-        setupStep(sizeChoices, (val) => { currentSize = val; });
-        setupStep(timelineChoices, (val) => { currentTimeline = val; });
+        bindStep(slabButtons, (val) => { currentSlab = val; });
+        bindStep(stoveButtons, (val) => { currentStove = val; });
+        bindStep(compButtons, (val) => { currentComp = val; });
+        bindStep(chimneyButtons, (val) => { currentChimney = val; });
         calculate();
 
         if (prefillBtn) {
             prefillBtn.addEventListener('click', () => {
-                const contactSection = document.querySelector('#contact');
+                const consultationSec = document.querySelector('#consultation');
                 const projectNotes = document.querySelector('#field-message');
                 const serviceSelect = document.querySelector('#field-service');
 
                 if (serviceSelect) {
-                    if (currentScope === 'kitchen') serviceSelect.value = 'modular-kitchen';
-                    else if (currentScope === 'villa') serviceSelect.value = 'turnkey-villa';
-                    else serviceSelect.value = 'full-residential';
+                    serviceSelect.value = 'kitchen-accessories';
                 }
 
                 if (projectNotes) {
-                    projectNotes.value = `Estimated Project: ${currentScope.toUpperCase()} | Scale: ${currentSize.toUpperCase()} | Delivery: ${currentTimeline.toUpperCase()}. We would like to schedule an initial consultation with Sushil Interior.`;
+                    const priceRange = readoutInvestment ? readoutInvestment.textContent : '';
+                    projectNotes.value = `Estimated Kitchen Configuration:\n- Counter Slab: ${currentSlab.toUpperCase()}\n- Stove Hob: ${currentStove.toUpperCase()}\n- Cutlery & Storage: ${currentComp.toUpperCase()}\n- Chimney: ${currentChimney.toUpperCase()}\n- Investment Scope: ${priceRange}\nPlease schedule on-site laser measurement and consultation in Saharanpur/Dehradun.`;
                 }
 
-                if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
-                showToast('Consultation scope pre-filled below');
+                if (consultationSec) {
+                    consultationSec.scrollIntoView({ behavior: 'smooth' });
+                }
+                showToast('Kitchen estimate transferred to consultation form!');
             });
         }
     };
     initEstimator();
 
     // ==========================================================================
-    // 7. Theme Toggle & Scroll Engines
+    // 9. Before & After Transformation Slider
     // ==========================================================================
-    const themeBtn = document.querySelector('#theme-toggle');
-    const savedTheme = localStorage.getItem('si_theme') || 'light';
+    const initBeforeAfter = () => {
+        const wrapper = document.querySelector('.before-after-wrapper');
+        const overlay = document.querySelector('.before-after-overlay');
+        const handle = document.querySelector('.slider-handle');
+        if (!wrapper || !overlay || !handle) return;
 
-    const setTheme = (theme) => {
-        if (theme === 'twilight') {
-            document.documentElement.setAttribute('data-theme', 'twilight');
-        } else {
-            document.documentElement.removeAttribute('data-theme');
-        }
-        localStorage.setItem('si_theme', theme);
+        let isDragging = false;
+
+        const setPosition = (clientX) => {
+            const rect = wrapper.getBoundingClientRect();
+            const offsetX = clientX - rect.left;
+            let percentage = (offsetX / rect.width) * 100;
+            percentage = Math.max(2, Math.min(98, percentage));
+            wrapper.style.setProperty('--split-pos', `${percentage}%`);
+        };
+
+        const onStart = (e) => {
+            isDragging = true;
+            const x = e.touches ? e.touches[0].clientX : e.clientX;
+            setPosition(x);
+        };
+
+        const onMove = (e) => {
+            if (!isDragging) return;
+            const x = e.touches ? e.touches[0].clientX : e.clientX;
+            setPosition(x);
+        };
+
+        const onEnd = () => {
+            isDragging = false;
+        };
+
+        wrapper.addEventListener('mousedown', onStart);
+        window.addEventListener('mousemove', onMove);
+        window.addEventListener('mouseup', onEnd);
+
+        wrapper.addEventListener('touchstart', onStart, { passive: true });
+        window.addEventListener('touchmove', onMove, { passive: true });
+        window.addEventListener('touchend', onEnd, { passive: true });
     };
-    setTheme(savedTheme);
+    initBeforeAfter();
 
-    if (themeBtn) {
-        themeBtn.addEventListener('click', () => {
-            const isTwilight = document.documentElement.getAttribute('data-theme') === 'twilight';
-            setTheme(isTwilight ? 'light' : 'twilight');
-            showToast(isTwilight ? 'Natural Day Mode' : 'Twilight Wood Mode');
-        });
-    }
+    // ==========================================================================
+    // 10. Quick Search Modal Engine
+    // ==========================================================================
+    const initSearchModal = () => {
+        const openBtn = document.querySelector('#search-open-btn');
+        const modal = document.querySelector('#search-modal');
+        const closeBackdrop = document.querySelector('#search-close-backdrop');
+        const closeBtn = document.querySelector('#search-close-btn');
+        const input = document.querySelector('#search-modal-input');
+        const resultsList = document.querySelector('#search-results-list');
 
-    const progressBar = document.querySelector('.scroll-progress');
-    const header = document.querySelector('.site-header');
-    const backToTopBtn = document.querySelector('#back-to-top');
+        if (!modal || !input) return;
 
-    window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY;
-        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = totalHeight > 0 ? (scrolled / totalHeight) * 100 : 0;
+        const openModal = () => {
+            modal.classList.add('open');
+            modal.setAttribute('aria-hidden', 'false');
+            input.value = '';
+            input.focus();
+            resultsList.innerHTML = '<div class="search-placeholder-msg">Type to search built-in hobs, teak cutlery trays, chimneys, slabs...</div>';
+            document.body.style.overflow = 'hidden';
+        };
 
-        if (progressBar) progressBar.style.width = `${progress}%`;
-        if (header) header.classList.toggle('scrolled', scrolled > 40);
-        if (backToTopBtn) backToTopBtn.classList.toggle('visible', scrolled > 600);
-    }, { passive: true });
+        const closeModal = () => {
+            modal.classList.remove('open');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+        };
 
-    if (backToTopBtn) {
-        backToTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    }
+        if (openBtn) openBtn.addEventListener('click', openModal);
+        if (closeBackdrop) closeBackdrop.addEventListener('click', closeModal);
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
-    // Scroll Reveal Engine
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-revealed');
-                revealObserver.unobserve(entry.target);
+        // Keyboard Shortcut: / or Ctrl+K
+        document.addEventListener('keydown', (e) => {
+            if ((e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') || (e.ctrlKey && e.key === 'k')) {
+                e.preventDefault();
+                openModal();
+            }
+            if (e.key === 'Escape') {
+                closeModal();
+                if (orderEngine) orderEngine.closeDrawer();
             }
         });
-    }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
 
-    document.querySelectorAll('[data-reveal]').forEach((el) => revealObserver.observe(el));
+        // Search index
+        const catalogItems = [
+            { title: 'Built-in 4-Burner Glass Hob', category: 'Gas Hobs', price: '₹18,400', id: 'hob-4b' },
+            { title: 'Handcrafted CP Teak Cutlery Tray', category: 'Cutlery & Drawers', price: '₹4,800', id: 'cutlery-teak' },
+            { title: 'Filterless Motion-Sensor Chimney', category: 'Chimneys', price: '₹19,500', id: 'chimney-motion' },
+            { title: 'Convection Built-in Oven (70L)', category: 'Built-in Ovens', price: '₹36,000', id: 'oven-70l' },
+            { title: 'Nano-White Quartz Slab (Slape)', category: 'Counter Slabs', price: '₹520/sq ft', id: 'slab-quartz' },
+            { title: '3-Burner Italian Flame Hob', category: 'Gas Hobs', price: '₹14,200', id: 'hob-3b' },
+            { title: 'Tandem Thali & Deep Pan Drawer', category: 'Cutlery & Drawers', price: '₹6,400', id: 'drawer-thali' },
+            { title: 'Blind Corner LeMans Trays', category: 'Corner Storage', price: '₹28,500', id: 'corner-lemans' },
+            { title: '6-Tier Hydraulic Pantry Larder', category: 'Tall Pantry', price: '₹42,000', id: 'pantry-6t' },
+            { title: 'Black Galaxy Granite Slab', category: 'Counter Slabs', price: '₹380/sq ft', id: 'slab-granite' },
+            { title: 'Curved Glass Island Chimney', category: 'Chimneys', price: '₹24,800', id: 'chimney-island' },
+            { title: 'Under-Sink Waste Station', category: 'Under-Sink', price: '₹8,900', id: 'sink-waste' }
+        ];
 
-    // Mobile Menu
-    const menuToggle = document.querySelector('.menu-toggle');
-    const mobileDrawer = document.querySelector('#mobile-drawer');
+        input.addEventListener('input', () => {
+            const query = input.value.trim().toLowerCase();
+            if (!query) {
+                resultsList.innerHTML = '<div class="search-placeholder-msg">Type to search built-in hobs, teak cutlery trays, chimneys, slabs...</div>';
+                return;
+            }
 
-    if (menuToggle && mobileDrawer) {
-        menuToggle.addEventListener('click', () => {
-            const isOpen = mobileDrawer.classList.toggle('open');
-            menuToggle.classList.toggle('open');
-            menuToggle.setAttribute('aria-expanded', isOpen);
-            document.body.style.overflow = isOpen ? 'hidden' : '';
-        });
+            const matches = catalogItems.filter(item =>
+                item.title.toLowerCase().includes(query) ||
+                item.category.toLowerCase().includes(query)
+            );
 
-        document.querySelectorAll('.mobile-nav-link').forEach((link) => {
-            link.addEventListener('click', () => {
-                mobileDrawer.classList.remove('open');
-                menuToggle.classList.remove('open');
-                document.body.style.overflow = '';
+            if (matches.length === 0) {
+                resultsList.innerHTML = `<div class="search-placeholder-msg">No products found matching "${query}".</div>`;
+                return;
+            }
+
+            resultsList.innerHTML = '';
+            matches.forEach(item => {
+                const row = document.createElement('div');
+                row.className = 'search-result-item';
+                row.innerHTML = `
+                    <div>
+                        <strong style="display: block; font-size: 14px;">${item.title}</strong>
+                        <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-ink-muted);">${item.category}</span>
+                    </div>
+                    <span style="font-family: var(--font-mono); font-weight: 600; color: var(--color-terracotta);">${item.price}</span>
+                `;
+                row.addEventListener('click', () => {
+                    closeModal();
+                    const targetCard = document.querySelector(`[data-id="${item.id}"]`)?.closest('.catalog-card');
+                    if (targetCard) {
+                        // Ensure it is visible if filtered
+                        targetCard.style.display = 'flex';
+                        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        targetCard.style.outline = '2px solid var(--color-terracotta)';
+                        setTimeout(() => { targetCard.style.outline = ''; }, 2400);
+                    }
+                });
+                resultsList.appendChild(row);
             });
         });
-    }
-
-    // Video Story Modal
-    const videoModal = document.querySelector('#video-modal');
-    const videoEl = videoModal ? videoModal.querySelector('video') : null;
-
-    const openVideo = () => {
-        if (!videoModal) return;
-        videoModal.classList.add('open');
-        videoModal.setAttribute('aria-hidden', 'false');
-        if (videoEl) videoEl.play();
-        document.body.style.overflow = 'hidden';
     };
+    initSearchModal();
 
-    const closeVideo = () => {
-        if (!videoModal) return;
-        videoModal.classList.remove('open');
-        videoModal.setAttribute('aria-hidden', 'true');
-        if (videoEl) videoEl.pause();
-        document.body.style.overflow = '';
-    };
+    // ==========================================================================
+    // 11. Camera AR & Swatches
+    // ==========================================================================
+    const camera = document.querySelector('#ar-camera');
+    const studioView = document.querySelector('#studio-view');
+    const cameraButton = document.querySelector('#camera-button');
+    const arStatus = document.querySelector('#ar-status');
 
-    document.querySelectorAll('[data-video-open]').forEach((b) => b.addEventListener('click', openVideo));
-    document.querySelectorAll('[data-video-close]').forEach((b) => b.addEventListener('click', closeVideo));
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            closeVideo();
-            if (orderEngine) orderEngine.closeDrawer();
-            if (mobileDrawer && mobileDrawer.classList.contains('open')) {
-                mobileDrawer.classList.remove('open');
-                if (menuToggle) menuToggle.classList.remove('open');
-                document.body.style.overflow = '';
+    if (cameraButton && studioView && camera) {
+        cameraButton.addEventListener('click', async () => {
+            if (studioView.classList.contains('camera-on')) {
+                if (camera.srcObject) {
+                    camera.srcObject.getTracks().forEach((track) => track.stop());
+                    camera.srcObject = null;
+                }
+                studioView.classList.remove('camera-on');
+                cameraButton.textContent = '▣ View with Mobile Camera (AR)';
+                if (arStatus) arStatus.innerHTML = '<span style="color: var(--color-terracotta);">✦</span><span>3D Studio Ready</span>';
+                return;
             }
-        }
-    });
 
-    // Toast System
-    const toastNotice = document.querySelector('#toast-notice');
-    window.showToast = (message) => {
-        if (!toastNotice) return;
-        toastNotice.querySelector('.toast-msg').textContent = message;
-        toastNotice.classList.add('show');
-        setTimeout(() => {
-            toastNotice.classList.remove('show');
-        }, 3400);
-    };
+            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                showToast('Camera AR is not supported on this browser');
+                return;
+            }
 
-    // Contact Form Submission
-    const contactForm = document.querySelector('#inquiry-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = 'Sending Studio Inquiry...';
-
-            setTimeout(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<span>Send Consultation Request</span> <span class="arrow">→</span>';
-                contactForm.reset();
-                showToast('Dhanyavaad! Sushil Interior studio team will contact you within 24 hours.');
-            }, 900);
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: { ideal: 'environment' } },
+                    audio: false
+                });
+                camera.srcObject = stream;
+                studioView.classList.add('camera-on');
+                cameraButton.textContent = '✕ Close Camera AR Preview';
+                if (arStatus) arStatus.innerHTML = '<span style="color: #4CAF50;">●</span><span>Camera AR Active — Place kitchen island in room</span>';
+                showToast('Camera AR feed active');
+            } catch (err) {
+                showToast('Camera permission denied or camera unavailable');
+            }
         });
     }
+
+    // Material Swatches Listener
+    document.querySelectorAll('.swatch').forEach((swatch) => {
+        swatch.addEventListener('click', () => {
+            document.querySelectorAll('.swatch').forEach((s) => s.classList.remove('active'));
+            swatch.classList.add('active');
+            const color = swatch.dataset.cabinet;
+            if (window.updateCabinetMaterial) {
+                window.updateCabinetMaterial(color);
+            }
+            showToast(`Cabinet finish: ${swatch.textContent.trim()}`);
+        });
+    });
+
+    document.querySelectorAll('.floor-choice').forEach((btn) => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.floor-choice').forEach((b) => b.classList.remove('active'));
+            btn.classList.add('active');
+            const slab = btn.dataset.slab;
+            if (window.updateSlabMaterial) {
+                window.updateSlabMaterial(slab);
+            }
+            showToast(`Counter slab: ${btn.textContent.trim()}`);
+        });
+    });
+
+    // ==========================================================================
+    // 12. Consultation Form Submission
+    // ==========================================================================
+    const consultationForm = document.querySelector('#consultation-form');
+    if (consultationForm) {
+        consultationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const submitBtn = consultationForm.querySelector('.submit-inquiry-btn');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span>Sending Request...</span>';
+            }
+
+            setTimeout(() => {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<span>Send Consultation Request</span> <span>→</span>';
+                }
+                const msgEl = consultationForm.querySelector('.form-message');
+                if (msgEl) {
+                    msgEl.textContent = 'Dhanyavaad! Sushil Interior studio team will contact you within 24 hours.';
+                }
+                consultationForm.reset();
+                showToast('Consultation request sent successfully!');
+            }, 800);
+        });
+    }
+
+    // Footer Year
+    const yearSpan = document.querySelector('#footer-year');
+    if (yearSpan) {
+        yearSpan.textContent = String(new Date().getFullYear());
+    }
+
+    // Toast Engine
+    const toastEl = document.querySelector('#toast-notice');
+    window.showToast = (message) => {
+        if (!toastEl) return;
+        const msg = toastEl.querySelector('.toast-msg');
+        if (msg) msg.textContent = message;
+        toastEl.classList.add('show');
+        setTimeout(() => {
+            toastEl.classList.remove('show');
+        }, 3200);
+    };
 });

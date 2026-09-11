@@ -3,617 +3,813 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sushil Interior is Saharanpur's celebrated master woodcraft and turnkey interior architecture studio crafting bespoke modular kitchens, teak bedroom suites, sacred pooja spaces, and luxury residences since 1998.">
-    <meta name="keywords" content="Sushil Interior Saharanpur, Sushil Interior Dehradun, Saharanpur furniture, handcrafted teak wood, modular kitchen Saharanpur, wood carving Saharanpur UP, interior designer Dehradun, turnkey home interior Saharanpur Dehradun">
+    <meta name="description" content="Sushil Interior is Saharanpur & Dehradun's premier modular kitchen studio specializing in built-in gas stoves & hobs, handcrafted CP teak cutlery drawer organizers, chimneys, ovens, and calibrated quartz countertop slabs (slape).">
+    <meta name="keywords" content="Sushil Interior, kitchen appliances Saharanpur, built in stove hob Saharanpur, kitchen cutlery organizers Dehradun, quartz slab slape, modular kitchen hardware, Blum cutlery tray, Hettich tandem drawer, kitchen chimney Saharanpur">
     <meta name="author" content="Sushil Interior">
-    <meta name="theme-color" content="#F8F6F0">
+    <meta name="theme-color" content="#17231F">
     <link rel="canonical" href="https://sushilinterior.com">
 
     <!-- OpenGraph Metadata -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Sushil Interior | Handcrafted Woodcraft & Turnkey Architecture · Saharanpur &amp; Dehradun">
-    <meta property="og:description" content="Blending Saharanpur’s 400-year carving heritage with German modular kitchens and turnkey residential architecture. Studios in Saharanpur and Dehradun.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85">
+    <meta property="og:title" content="Sushil Interior | Luxury Kitchen Appliances, Cutlery Organizers, Stoves & Slabs">
+    <meta property="og:description" content="Built-in gas stoves & hobs, handcrafted Saharanpur CP teak cutlery drawer organizers, chimneys, ovens, and calibrated quartz kitchen slabs. Studios in Saharanpur and Dehradun.">
+    <meta property="og:image" content="assets/kitchen-appliances-hero.png">
     <meta property="og:url" content="https://sushilinterior.com">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Sushil Interior | Master Woodcraft & Architectural Interiors">
-    <meta name="twitter:description" content="Master woodcraft & interior architecture studios located in Saharanpur and Dehradun.">
-    <meta name="twitter:image" content="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85">
+    <meta name="twitter:title" content="Sushil Interior | Kitchen Appliances, Cutlery, Stoves & Slabs">
+    <meta name="twitter:description" content="Master kitchen appliances, handcrafted cutlery organizers, and quartz slabs in Saharanpur & Dehradun.">
+    <meta name="twitter:image" content="assets/kitchen-appliances-hero.png">
 
     <!-- Favicon (SVG Monogram) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%235C3317'/%3E%3Ctext x='16' y='23' font-family='Georgia, serif' font-size='20' fill='%23FFFFFF' text-anchor='middle'%3ESI%3C/text%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2317231F' rx='6'/%3E%3Ctext x='16' y='22' font-family='Georgia, serif' font-size='18' font-weight='bold' fill='%23C8A25D' text-anchor='middle'%3ESI%3C/text%3E%3C/svg%3E">
 
-    <title>Sushil Interior | Handcrafted Woodcraft &amp; Turnkey Architecture · Saharanpur &amp; Dehradun</title>
+    <title>Sushil Interior | Luxury Kitchen Appliances, Cutlery Organizers, Stoves &amp; Slabs · Saharanpur &amp; Dehradun</title>
 
     <!-- Typography (Google Fonts) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+
+    <!-- Typed.js for dynamic typing animation -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <!-- Three.js & OrbitControls for 3D WebGL Modular Kitchen Studio -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 
     <link rel="stylesheet" href="style.css">
 
-    <!-- JSON-LD Local Business & Interior Design Studio Schema -->
+    <!-- JSON-LD Local Business & Kitchen Appliances Store Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "HomeGoodsStore",
-      "name": "Sushil Interior",
-      "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85",
-      "description": "Bespoke handcrafted wooden furniture, modular kitchen, and turnkey architectural interior studio with locations in Saharanpur and Dehradun.",
+      "name": "Sushil Interior - Kitchen Appliances, Cutlery & Slabs",
+      "image": "assets/kitchen-appliances-hero.png",
+      "description": "Specializing in built-in gas hobs, handcrafted CP teak cutlery drawer compartments, chimneys, built-in ovens, and quartz countertop slabs (slape).",
       "url": "https://sushilinterior.com",
       "telephone": "+919876543210",
       "priceRange": "₹₹₹",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Court Road, Near Gill Colony",
-        "addressLocality": "Saharanpur",
-        "addressRegion": "Uttar Pradesh",
-        "postalCode": "247001",
-        "addressCountry": "IN"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 29.9640,
-        "longitude": 77.5460
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        "opens": "10:00",
-        "closes": "20:00"
-      },
-      "areaServed": ["Saharanpur", "Dehradun"]
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Court Road, Near Gill Colony",
+          "addressLocality": "Saharanpur",
+          "addressRegion": "Uttar Pradesh",
+          "postalCode": "247001",
+          "addressCountry": "IN"
+        },
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Rajpur Road, Near Jakhan",
+          "addressLocality": "Dehradun",
+          "addressRegion": "Uttarakhand",
+          "postalCode": "248001",
+          "addressCountry": "IN"
+        }
+      ],
+      "openingHours": "Mo-Sa 10:00-20:00"
     }
     </script>
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <a class="skip-link" href="#main-content">Skip to kitchen content</a>
 
-    <!-- Scroll Progress Indicator -->
-    <div class="scroll-progress" aria-hidden="true"></div>
-
-    <div class="site-shell">
-        <!-- Site Header -->
-        <header class="site-header">
-            <div class="header-left">
-                <a class="brand" href="#top" aria-label="Sushil Interior Saharanpur homepage">
-                    <span class="brand-mark">SI</span>
-                    <div class="brand-text">
-                        <span class="brand-name">Sushil Interior</span>
-                        <span class="brand-tagline">Saharanpur · Est. 1998</span>
-                    </div>
-                </a>
-
-                <nav class="main-nav" aria-label="Primary navigation">
-                    <a class="nav-link" href="#rooms">Whole House</a>
-                    <a class="nav-link" href="#catalog">Order Catalog</a>
-                    <a class="nav-link" href="#showcase">3D &amp; AR Studio</a>
-                    <a class="nav-link" href="#before-after">Transformations</a>
-                    <a class="nav-link" href="#estimator">Estimator</a>
-                    <a class="nav-link" href="about.html">About Heritage</a>
-                    <a class="nav-link" href="#contact">Contact</a>
-                </nav>
+    <!-- Header Navigation -->
+    <header class="header" id="site-header">
+        <a class="brand" href="#top">
+            <span class="brand-monogram">SI</span>
+            <div class="brand-info">
+                <strong class="brand-title">Sushil Interior</strong>
+                <span class="brand-sub">Kitchen Appliances &amp; Cutlery Studio</span>
             </div>
+        </a>
 
-            <div class="header-right">
-                <div class="status-pill" title="Saharanpur Studio & Workshop">
-                    <span class="status-dot"></span>
-                    <span>Online</span>
-                </div>
+        <!-- Desktop Navigation -->
+        <nav class="nav" id="main-nav" aria-label="Main Navigation">
+            <a class="nav-link" href="#appliances">Appliances &amp; Hobs</a>
+            <a class="nav-link" href="#cutlery">Cutlery &amp; Drawers</a>
+            <a class="nav-link" href="#slabs">Slabs (Slape)</a>
+            <a class="nav-link" href="#studio">3D Studio &amp; AR</a>
+            <a class="nav-link" href="#estimator">Estimator</a>
+            <a class="nav-link" href="about.html">Heritage</a>
+            <a class="nav-link" href="#consultation">Contact</a>
+        </nav>
 
-                <div class="header-controls">
-                    <!-- Order Cart Trigger -->
-                    <button class="icon-button" data-open-cart aria-label="Open order quote basket" title="Bespoke Order Basket">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                            <line x1="3" y1="6" x2="21" y2="6"></line>
-                            <path d="M16 10a4 4 0 0 1-8 0"></path>
-                        </svg>
-                        <span class="cart-badge-count" id="cart-count-badge">1</span>
-                    </button>
+        <!-- Header Actions -->
+        <div class="header-actions">
+            <!-- Search Trigger Button -->
+            <button class="icon-button" id="search-open-btn" aria-label="Search kitchen appliances and cutlery" title="Search Appliances &amp; Cutlery">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </button>
 
-                    <!-- Twilight Theme Toggle -->
-                    <button class="icon-button theme-toggle" id="theme-toggle" aria-label="Toggle day and evening mood mode" title="Twilight Mode">
-                        <svg viewBox="0 0 24 24">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        </svg>
-                    </button>
-                </div>
+            <!-- Quote Basket Cart Trigger -->
+            <button class="icon-button cart-pill-btn" id="open-cart-btn" data-open-cart aria-label="View Quote Basket" title="View Quote Basket">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+                <span class="cart-badge-count" id="cart-count-badge">1</span>
+            </button>
 
-                <!-- Direct Consultation Button -->
-                <a class="header-consult-btn" href="#contact">
-                    <span>Request Quote</span>
-                </a>
+            <!-- CTA Button -->
+            <a class="button button-small header-cta" href="#consultation">
+                <span>Plan My Kitchen</span>
+                <span>↗</span>
+            </a>
 
-                <button class="menu-toggle" aria-label="Open mobile navigation" aria-expanded="false">
-                    <span></span><span></span><span></span>
-                </button>
-            </div>
-        </header>
-
-        <!-- Mobile Slide-out Drawer -->
-        <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
-            <div class="mobile-nav-links">
-                <a class="mobile-nav-link" href="#rooms">Whole House Interiors</a>
-                <a class="mobile-nav-link" href="#catalog">Order Catalog</a>
-                <a class="mobile-nav-link" href="#showcase">3D &amp; AR Studio</a>
-                <a class="mobile-nav-link" href="#before-after">Transformations</a>
-                <a class="mobile-nav-link" href="#estimator">Project Estimator</a>
-                <a class="mobile-nav-link" href="about.html">About Heritage</a>
-                <a class="mobile-nav-link" href="#contact">Contact &amp; Booking</a>
-            </div>
-            <div class="mobile-drawer-footer">
-                <div class="mobile-drawer-meta">
-                    <span>Court Road, Saharanpur, UP</span>
-                    <span>+91 98765 43210</span>
-                </div>
-            </div>
+            <!-- Mobile Hamburger Menu Button -->
+            <button class="menu-button" id="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+            </button>
         </div>
+    </header>
 
-        <main id="main-content">
-            <!-- Hero Section -->
-            <section class="hero section-pad container-wide" id="top">
-                <div class="hero-copy" data-reveal>
-                    <p class="eyebrow">Handcrafted Architectural Woodcraft Studio · Saharanpur, Uttar Pradesh</p>
-                    <h1 class="heading-display hero-headline">
-                        Woodcraft with a<br>
-                        <em>sacred soul.</em>
-                    </h1>
-                    <p class="hero-description">
-                        Blending Saharanpur’s 400-year-old teakwood carving heritage with German modular kitchen engineering, acoustic bedroom paneling, and complete turnkey architectural execution.
-                    </p>
-                    <div class="hero-actions">
-                        <a class="button-primary" href="#rooms" data-cursor="EXPLORE">
-                            <span>Explore Room Showcases</span>
-                            <span class="arrow">↓</span>
-                        </a>
-                        <button class="play-video-btn" data-video-open data-cursor="PLAY">
-                            <span class="play-video-icon">▶</span>
-                            <span>Watch Workshop Story (01:24)</span>
-                        </button>
-                    </div>
-                    <div class="hero-stats">
-                        <div class="hero-stat-item">
-                            <span class="hero-stat-num">1,200+</span>
-                            <span class="hero-stat-label">Homes Handcrafted</span>
-                        </div>
-                        <div class="hero-stat-item">
-                            <span class="hero-stat-num">25+ Yrs</span>
-                            <span class="hero-stat-label">Saharanpur Heritage</span>
-                        </div>
-                        <div class="hero-stat-item">
-                            <span class="hero-stat-num">100%</span>
-                            <span class="hero-stat-label">Kiln-Dried CP Teak</span>
-                        </div>
-                    </div>
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+        <nav class="mobile-nav-links">
+            <a class="mobile-nav-link" href="#appliances">Appliances &amp; Stoves</a>
+            <a class="mobile-nav-link" href="#cutlery">Cutlery &amp; Drawers</a>
+            <a class="mobile-nav-link" href="#slabs">Slabs (Slape)</a>
+            <a class="mobile-nav-link" href="#gallery">Kitchen Gallery</a>
+            <a class="mobile-nav-link" href="#drawer-studio">Cutlery Drawer Studio</a>
+            <a class="mobile-nav-link" href="#studio">3D WebGL Studio &amp; AR</a>
+            <a class="mobile-nav-link" href="#before-after">Before &amp; After</a>
+            <a class="mobile-nav-link" href="#estimator">Kitchen Estimator (₹)</a>
+            <a class="mobile-nav-link" href="about.html">About Heritage</a>
+            <a class="mobile-nav-link" href="#consultation">Studio Booking</a>
+        </nav>
+        <div class="mobile-drawer-footer">
+            <div class="mobile-contact-line">Court Road, Saharanpur · Rajpur Road, Dehradun</div>
+            <a class="mobile-phone-link" href="tel:+919876543210">📞 +91 98765 43210</a>
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="top">
+            <div class="hero-copy reveal">
+                <p class="eyebrow">Saharanpur &amp; Dehradun · Kitchen Appliance &amp; Cutlery Specialists</p>
+                <h1 class="hero-headline">
+                    The kitchen,<br>
+                    <em>beautifully equipped.</em>
+                </h1>
+
+                <!-- Dynamic Typed.js Text Rotator -->
+                <div class="hero-typed-container">
+                    <span class="typed-label">Precision Craft:</span>
+                    <span class="hero-typed-text" id="typed-kitchen-text"></span>
                 </div>
 
-                <div class="hero-visual-wrapper" data-reveal>
-                    <div class="hero-slider-wrap" id="hero-slider-wrap" data-cursor="DRAG">
-                        <div class="hero-slider-dots" id="hero-slider-dots"></div>
-                        <div class="hero-slider-nav">
-                            <button class="slider-nav-arrow" id="hero-slider-prev" aria-label="Previous showcase slide">←</button>
-                            <button class="slider-nav-arrow" id="hero-slider-next" aria-label="Next showcase slide">→</button>
-                        </div>
-                        <div class="hero-slides-track">
-                            <div class="hero-slide active">
-                                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=85" alt="Handcrafted living room with Saharanpur teak accents" loading="eager" width="1400" height="1750">
-                                <div class="hero-slide-info">
-                                    <span class="hero-slide-tag">Signature Suite · Saharanpur</span>
-                                    <h3 class="hero-slide-title">Hand-Chiselled Teak Living Room</h3>
-                                </div>
-                            </div>
-                            <div class="hero-slide">
-                                <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1400&q=85" alt="Bespoke German modular kitchen with solid wood fluting" loading="lazy" width="1400" height="1750">
-                                <div class="hero-slide-info">
-                                    <span class="hero-slide-tag">Modular Kitchen Architecture</span>
-                                    <h3 class="hero-slide-title">Fluted Sheesham &amp; Quartz Kitchen</h3>
-                                </div>
-                            </div>
-                            <div class="hero-slide">
-                                <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1400&q=85" alt="Master bedroom suite with acoustic cane and wood headboard" loading="lazy" width="1400" height="1750">
-                                <div class="hero-slide-info">
-                                    <span class="hero-slide-tag">Master Bedroom Sanctuary</span>
-                                    <h3 class="hero-slide-title">Woven Cane Teak King Suite</h3>
-                                </div>
-                            </div>
-                            <div class="hero-slide">
-                                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1400&q=85" alt="Sacred Saharanpur pooja mandir sanctuary" loading="lazy" width="1400" height="1750">
-                                <div class="hero-slide-info">
-                                    <span class="hero-slide-tag">Sacred Pooja Sanctuary</span>
-                                    <h3 class="hero-slide-title">Intricate Teak Mandir &amp; Brass Inlay</h3>
-                                </div>
-                            </div>
-                            <div class="hero-slide">
-                                <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1400&q=85" alt="Turnkey luxury villa architectural interior" loading="lazy" width="1400" height="1750">
-                                <div class="hero-slide-info">
-                                    <span class="hero-slide-tag">Turnkey Luxury Residences</span>
-                                    <h3 class="hero-slide-title">Full Turnkey Villa Architecture</h3>
-                                </div>
-                            </div>
-                        </div>
+                <p class="intro">
+                    Specializing exclusively in built-in brass gas stoves &amp; hobs, handcrafted Saharanpur teak cutlery drawer compartments, motion-sensor chimneys, and calibrated quartz &amp; granite countertop slabs (slape).
+                </p>
+
+                <div class="hero-actions">
+                    <a class="button button-hero" href="#appliances">
+                        <span>Explore Appliances &amp; Cutlery</span>
+                        <span>↓</span>
+                    </a>
+                    <a class="text-link" href="#drawer-studio">
+                        <span>Configure Drawer Layout</span>
+                        <span>→</span>
+                    </a>
+                    <a class="text-link" href="#studio">
+                        <span>Try 3D Studio</span>
+                        <span>↗</span>
+                    </a>
+                </div>
+
+                <div class="hero-notes">
+                    <div class="hero-note-item">
+                        <b>26+ Years</b>
+                        <span>Saharanpur Craft</span>
                     </div>
-                    <div class="hero-badge-note">
-                        <span class="badge-num">SI / SAHARANPUR</span>
-                        <span class="badge-desc">Hand-Chiselled Teak,<br>Engineered Living</span>
+                    <div class="hero-note-item">
+                        <b>German Blum</b>
+                        <span>Fittings &amp; Runners</span>
+                    </div>
+                    <div class="hero-note-item">
+                        <b>SS 304 &amp; Teak</b>
+                        <span>100% Rust &amp; Warp Proof</span>
+                    </div>
+                    <div class="hero-note-item">
+                        <b>White-Glove</b>
+                        <span>On-site Installation</span>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <!-- Press & Guild Recognition Marquee -->
-            <section class="press-marquee" aria-label="Studio honors and coverage">
-                <div class="marquee-track">
-                    <div class="marquee-item">ARCHITECTURAL DIGEST INDIA <span class="marquee-divider">✦</span></div>
-                    <div class="marquee-item">INDIA DESIGN ID HONORS <span class="marquee-divider">✦</span></div>
-                    <div class="marquee-item">ELLE DECOR INDIA <span class="marquee-divider">✦</span></div>
-                    <div class="marquee-item">SAHARANPUR WOODCRAFT GUILD <span class="marquee-divider">✦</span></div>
-                    <div class="marquee-item">GOODHOMES RESIDENTIAL AWARD <span class="marquee-divider">✦</span></div>
-                    <div class="marquee-item">DEZEEN INDIA RESIDENCES <span class="marquee-divider">✦</span></div>
-                    <!-- Seamless infinite repeat -->
-                    <div class="marquee-item">ARCHITECTURAL DIGEST INDIA <span class="marquee-divider">✦</span></div>
-                    <div class="marquee-item">INDIA DESIGN ID HONORS <span class="marquee-divider">✦</span></div>
-                    <div class="marquee-item">ELLE DECOR INDIA <span class="marquee-divider">✦</span></div>
-                    <div class="marquee-item">SAHARANPUR WOODCRAFT GUILD <span class="marquee-divider">✦</span></div>
-                    <div class="marquee-item">GOODHOMES RESIDENTIAL AWARD <span class="marquee-divider">✦</span></div>
-                    <div class="marquee-item">DEZEEN INDIA RESIDENCES <span class="marquee-divider">✦</span></div>
+            <!-- Hero Image Showcase -->
+            <div class="hero-image reveal">
+                <img src="assets/kitchen-appliances-hero.png" alt="Warm modern kitchen with built-in oven, gas hob, chimney and stone floor" loading="eager">
+                <div class="image-caption">
+                    <span>01 / Culinary Excellence</span>
+                    <span>Built-in Oven · 4-Burner Glass Hob · Chimney · Quartz Slab</span>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Whole House Room-by-Room Sections -->
-            <section class="rooms-section section-pad" id="rooms">
-                <div class="container-wide">
-                    <div data-reveal>
-                        <p class="eyebrow">Whole House Interior Architecture</p>
-                        <h2 class="heading-section">
-                            Room by Room.<br>
-                            <em>Tailored to perfection.</em>
-                        </h2>
-                        <p class="lead-copy">
-                            From high-precision modular island kitchens and acoustic master bedroom suites to sacred teak pooja mandirs and full turnkey villa transformations.
-                        </p>
-                    </div>
+        <!-- Press / Guild Infinite Marquee -->
+        <section class="press-marquee" aria-label="Brand and Hardware Alliances">
+            <div class="marquee-track">
+                <div class="marquee-item">BLUM GERMAN HARDWARE <span class="marquee-divider">✦</span></div>
+                <div class="marquee-item">HETTICH PRECISION RUNNERS <span class="marquee-divider">✦</span></div>
+                <div class="marquee-item">FABER HOBS &amp; CHIMNEYS <span class="marquee-divider">✦</span></div>
+                <div class="marquee-item">ELICA ITALIAN HOODS <span class="marquee-divider">✦</span></div>
+                <div class="marquee-item">KAFF APPLIANCES <span class="marquee-divider">✦</span></div>
+                <div class="marquee-item">HAFELE EXCELLENCE <span class="marquee-divider">✦</span></div>
+                <div class="marquee-item">SAHARANPUR TEAK GUILD <span class="marquee-divider">✦</span></div>
+                <div class="marquee-item">BOSCH BUILT-IN OVENS <span class="marquee-divider">✦</span></div>
+                <div class="marquee-item">GLEN KITCHEN HOBS <span class="marquee-divider">✦</span></div>
+                <!-- Infinite repeat -->
+                <div class="marquee-item">BLUM GERMAN HARDWARE <span class="marquee-divider">✦</span></div>
+                <div class="marquee-item">HETTICH PRECISION RUNNERS <span class="marquee-divider">✦</span></div>
+                <div class="marquee-item">FABER HOBS &amp; CHIMNEYS <span class="marquee-divider">✦</span></div>
+                <div class="marquee-item">ELICA ITALIAN HOODS <span class="marquee-divider">✦</span></div>
+                <div class="marquee-item">KAFF APPLIANCES <span class="marquee-divider">✦</span></div>
+                <div class="marquee-item">HAFELE EXCELLENCE <span class="marquee-divider">✦</span></div>
+                <div class="marquee-item">SAHARANPUR TEAK GUILD <span class="marquee-divider">✦</span></div>
+                <div class="marquee-item">BOSCH BUILT-IN OVENS <span class="marquee-divider">✦</span></div>
+                <div class="marquee-item">GLEN KITCHEN HOBS <span class="marquee-divider">✦</span></div>
+            </div>
+        </section>
 
-                    <!-- Room Filter Tabs -->
-                    <div class="room-tabs-bar" role="tablist" aria-label="Filter rooms">
-                        <button class="room-tab-btn active" data-room="all">All Spaces</button>
-                        <button class="room-tab-btn" data-room="kitchen">Modular Kitchens</button>
-                        <button class="room-tab-btn" data-room="bedroom">Master Bedrooms</button>
-                        <button class="room-tab-btn" data-room="living">Living &amp; Drawing</button>
-                        <button class="room-tab-btn" data-room="pooja">Sacred Pooja Rooms</button>
-                        <button class="room-tab-btn" data-room="bath">Spa Bathrooms</button>
-                        <button class="room-tab-btn" data-room="turnkey">Turnkey Villa</button>
-                    </div>
-
-                    <!-- Room Grid Cards -->
-                    <div class="rooms-grid" data-reveal="stagger">
-                        <!-- Kitchen -->
-                        <div class="room-card" data-room-type="kitchen">
-                            <div class="room-card-image">
-                                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1000&q=80" alt="Modular Island Kitchen with Quartz Countertop" loading="lazy">
-                                <span class="room-badge-tag">Modular Kitchen</span>
-                            </div>
-                            <div class="room-card-body">
-                                <div>
-                                    <h3 class="room-card-title">Artisan Island Kitchen</h3>
-                                    <p class="room-card-desc">German soft-close hardware, anti-termite marine ply carcasses, seamless quartz waterfall island, and built-in appliance cabinetry.</p>
-                                    <ul class="room-specs-list">
-                                        <li>• Fitting: Hettich InnoTech Atira drawers</li>
-                                        <li>• Countertop: Italian Calacatta Quartz (20mm)</li>
-                                        <li>• Finish: Anti-fingerprint acrylic PU matte</li>
-                                    </ul>
-                                </div>
-                                <div class="room-card-footer">
-                                    <span class="room-card-price">From ₹3,80,000</span>
-                                    <button class="add-to-order-btn">+ Add to Quote Basket</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Master Bedroom -->
-                        <div class="room-card" data-room-type="bedroom">
-                            <div class="room-card-image">
-                                <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=1000&q=80" alt="Master Bedroom with Teak Wood Headboard" loading="lazy">
-                                <span class="room-badge-tag">Master Bedroom</span>
-                            </div>
-                            <div class="room-card-body">
-                                <div>
-                                    <h3 class="room-card-title">Teak Fluted Bedroom Suite</h3>
-                                    <p class="room-card-desc">Solid Central Province teak platform bed with vertical acoustic wall slats, floating bedside cantilever tables, and LED profile illumination.</p>
-                                    <ul class="room-specs-list">
-                                        <li>• Timber: Kiln-dried CP Teak (8-10% moisture)</li>
-                                        <li>• Wardrobe: Floor-to-ceiling glass &amp; teak sliders</li>
-                                        <li>• Acoustic backing: 100% natural wool felt</li>
-                                    </ul>
-                                </div>
-                                <div class="room-card-footer">
-                                    <span class="room-card-price">From ₹2,90,000</span>
-                                    <button class="add-to-order-btn">+ Add to Quote Basket</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Living Room -->
-                        <div class="room-card" data-room-type="living">
-                            <div class="room-card-image">
-                                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=80" alt="Saharanpur Heritage Living Room" loading="lazy">
-                                <span class="room-badge-tag">Living &amp; Drawing</span>
-                            </div>
-                            <div class="room-card-body">
-                                <div>
-                                    <h3 class="room-card-title">Heritage Drawing Pavilion</h3>
-                                    <p class="room-card-desc">Hand-chiselled Saharanpur Jali screen divider, low-slung bouclé sectional on teak plinth, and brass-inlaid monolith coffee table.</p>
-                                    <ul class="room-specs-list">
-                                        <li>• Accent: Hand-carved Sheesham Jali fretwork</li>
-                                        <li>• Fabric: High-density textured woven linen</li>
-                                        <li>• Table: Honed travertine &amp; solid brass base</li>
-                                    </ul>
-                                </div>
-                                <div class="room-card-footer">
-                                    <span class="room-card-price">From ₹2,40,000</span>
-                                    <button class="add-to-order-btn">+ Add to Quote Basket</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Sacred Pooja Room -->
-                        <div class="room-card" data-room-type="pooja">
-                            <div class="room-card-image">
-                                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1000&q=80" alt="Sacred Saharanpur Teak Pooja Mandir" loading="lazy">
-                                <span class="room-badge-tag">Sacred Pooja Room</span>
-                            </div>
-                            <div class="room-card-body">
-                                <div>
-                                    <h3 class="room-card-title">Bespoke Teak Mandir Sanctuary</h3>
-                                    <p class="room-card-desc">Traditional Saharanpur floral and geometric carving with backlit onyx marble pedestal, concealed prayer drawers, and solid brass temple bells.</p>
-                                    <ul class="room-specs-list">
-                                        <li>• Wood: 100% Solid Seasoned Teakwood</li>
-                                        <li>• Lighting: Concealed 3000K warm gold LEDs</li>
-                                        <li>• Inlay: Pure brushed unlacquered brass bells</li>
-                                    </ul>
-                                </div>
-                                <div class="room-card-footer">
-                                    <span class="room-card-price">From ₹1,65,000</span>
-                                    <button class="add-to-order-btn">+ Add to Quote Basket</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Spa Bathroom -->
-                        <div class="room-card" data-room-type="bath">
-                            <div class="room-card-image">
-                                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1000&q=80" alt="Luxury Spa Bathroom Vanity" loading="lazy">
-                                <span class="room-badge-tag">Spa Bathroom</span>
-                            </div>
-                            <div class="room-card-body">
-                                <div>
-                                    <h3 class="room-card-title">Moisture-Proof Teak Vanity</h3>
-                                    <p class="room-card-desc">BWR-grade marine ply vanity clad in water-resistant oiled teak with fluted quartz vessel basin and smart anti-fog backlit mirror.</p>
-                                    <ul class="room-specs-list">
-                                        <li>• Carcass: 100% Boiling Waterproof (BWR) ply</li>
-                                        <li>• Counter: Seamless composite stone slab</li>
-                                        <li>• Hardware: Rust-proof matte black &amp; brass</li>
-                                    </ul>
-                                </div>
-                                <div class="room-card-footer">
-                                    <span class="room-card-price">From ₹85,000</span>
-                                    <button class="add-to-order-btn">+ Add to Quote Basket</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Turnkey Residence -->
-                        <div class="room-card" data-room-type="turnkey">
-                            <div class="room-card-image">
-                                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=80" alt="Turnkey Villa Interior by Sushil Interior" loading="lazy">
-                                <span class="room-badge-tag">Full Turnkey Residence</span>
-                            </div>
-                            <div class="room-card-body">
-                                <div>
-                                    <h3 class="room-card-title">Turnkey Villa &amp; Kothi Execution</h3>
-                                    <p class="room-card-desc">End-to-end turnkey interior contracting: false ceilings, electrical lighting layouts, bespoke joinery, modular kitchen, all wardrobes, and flooring.</p>
-                                    <ul class="room-specs-list">
-                                        <li>• Scope: Complete 3BHK / 4BHK / Villa</li>
-                                        <li>• Delivery: Dedicated site supervisor on-site</li>
-                                        <li>• Warranty: 10-Year structural wood warranty</li>
-                                    </ul>
-                                </div>
-                                <div class="room-card-footer">
-                                    <span class="room-card-price">From ₹8,50,000</span>
-                                    <button class="add-to-order-btn">+ Add to Quote Basket</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Interior Gallery Slider Section -->
+        <section class="gallery-section" id="gallery">
+            <div class="gallery-heading">
+                <div>
+                    <p class="eyebrow">A Home for Everyday Rituals</p>
+                    <h2>Kitchen interiors,<br><em>made to linger in.</em></h2>
                 </div>
-            </section>
+                <div class="slider-controls">
+                    <button class="slide-btn" id="previous-slide" aria-label="Previous interior">←</button>
+                    <span id="slide-count">01 / 03</span>
+                    <button class="slide-btn" id="next-slide" aria-label="Next interior">→</button>
+                </div>
+            </div>
 
-            <!-- Order Catalog Section -->
-            <section class="catalog-section section-pad container-wide" id="catalog">
-                <div data-reveal>
-                    <p class="eyebrow">Handcrafted Saharanpur Furniture</p>
-                    <h2 class="heading-section">
-                        Signature Furniture Catalog<br>
-                        <em>Customizable &amp; Ready to Order.</em>
-                    </h2>
+            <!-- Gallery Slides Container -->
+            <div class="interior-slider">
+                <!-- Slide 1: Walnut & Warm Stone -->
+                <article class="interior-slide active">
+                    <img src="assets/kitchen-gallery-walnut.png" alt="Walnut kitchen interior with quartz island and built-in appliances">
+                    <div class="slide-meta-box">
+                        <p>01 / Quiet Luxury</p>
+                        <h3>Walnut &amp; Warm Stone</h3>
+                        <span>Calibrated Quartz Island · Built-in Convection Oven · Concealed Teak Cutlery Compartments</span>
+                    </div>
+                </article>
+
+                <!-- Slide 2: Deep Moss & Terrazzo -->
+                <article class="interior-slide">
+                    <img src="assets/kitchen-gallery-moss.png" alt="Deep green kitchen interior with stone island, brass hob and appliances">
+                    <div class="slide-meta-box">
+                        <p>02 / Earthy Modern</p>
+                        <h3>Deep Moss &amp; Terrazzo</h3>
+                        <span>Built-in Brass Gas Hob · Integrated Cooling · Soft-Close Tandem Thali Baskets</span>
+                    </div>
+                </article>
+
+                <!-- Slide 3: Cream & Natural Oak -->
+                <article class="interior-slide">
+                    <img src="assets/kitchen-gallery-cream.png" alt="Light cream kitchen with oak details, fluted pantry and black hob">
+                    <div class="slide-meta-box">
+                        <p>03 / Soft Daylight</p>
+                        <h3>Cream &amp; Natural Oak</h3>
+                        <span>Fluted Tall Larder Pantry · 4-Burner Black Glass Hob · Easy-Clean Heat-Proof Slab</span>
+                    </div>
+                </article>
+            </div>
+            <div class="slider-progress"><i id="slider-progress-bar"></i></div>
+        </section>
+
+        <!-- Comprehensive Kitchen Appliances & Cutlery Catalog -->
+        <section class="section" id="appliances">
+            <div class="section-heading">
+                <p class="eyebrow">01 / Appliances &amp; Cutlery Systems</p>
+                <h2>Everyday performance,<br><em>considered beautifully.</em></h2>
+                <p>Choose dependable gas hobs, handcrafted cutlery trays, and countertop slabs that sit seamlessly within your cooking space.</p>
+            </div>
+
+            <!-- Category Filter Tabs -->
+            <div class="catalog-tabs-bar" role="tablist" aria-label="Filter kitchen systems">
+                <button class="catalog-tab-btn active" data-filter="all">All Systems (12)</button>
+                <button class="catalog-tab-btn" data-filter="hobs">Stoves &amp; Gas Hobs</button>
+                <button class="catalog-tab-btn" data-filter="cutlery">Cutlery &amp; Drawers</button>
+                <button class="catalog-tab-btn" data-filter="chimneys">Chimneys &amp; Hoods</button>
+                <button class="catalog-tab-btn" data-filter="ovens">Built-in Ovens</button>
+                <button class="catalog-tab-btn" data-filter="slabs">Slabs (Slape) &amp; Counters</button>
+                <button class="catalog-tab-btn" data-filter="storage">Tall &amp; Corner Units</button>
+            </div>
+
+            <!-- Product Cards Grid -->
+            <div class="catalog-grid" id="catalog-grid">
+                <!-- 1. Built-in 4-Burner Glass Hob -->
+                <article class="catalog-card" data-category="hobs">
+                    <div class="card-media">
+                        <img src="https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?auto=format&fit=crop&w=800&q=80" alt="Built-in 4-Burner Tempered Glass Hob Stove" loading="lazy">
+                        <span class="card-badge">Stove / Gas Hob</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-header-row">
+                            <h3 class="card-title">Built-in 4-Burner Glass Hob</h3>
+                            <span class="card-price">₹18,400</span>
+                        </div>
+                        <p class="card-desc">8mm beveled tempered glass gas hob with forged brass triple-ring burners, continuous pulse auto-ignition, and heavy cast-iron pan trivets.</p>
+                        <ul class="card-specs">
+                            <li>• Burners: 4 Forged Brass (1 Triple Ring, 2 Dual, 1 Aux)</li>
+                            <li>• Safety: Flame Failure Device (FFD) auto gas cut-off</li>
+                            <li>• Cutout: 710 x 480 mm · Flush counter fit</li>
+                        </ul>
+                        <div class="card-footer">
+                            <button class="button-primary-sm add-basket-btn" data-id="hob-4b" data-name="Built-in 4-Burner Glass Hob" data-price="18400" data-finish="Tempered Black Glass" data-img="https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?auto=format&fit=crop&w=400&q=80">+ Add to Basket</button>
+                            <button class="button-ghost-sm product-consult-btn" data-product="Built-in 4-Burner Glass Hob">Ask Studio ↗</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 2. Solid Saharanpur Teak Cutlery Organizer -->
+                <article class="catalog-card" data-category="cutlery" id="cutlery">
+                    <div class="card-media">
+                        <img src="https://images.unsplash.com/photo-1590794056226-79ef3a8147e1?auto=format&fit=crop&w=800&q=80" alt="Solid Saharanpur Teak Cutlery Tray Insert" loading="lazy">
+                        <span class="card-badge">Cutlery &amp; Drawers</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-header-row">
+                            <h3 class="card-title">Handcrafted CP Teak Cutlery Tray</h3>
+                            <span class="card-price">₹4,800</span>
+                        </div>
+                        <p class="card-desc">Handcrafted kiln-dried CP Teak cutlery organizer with adjustable partitions, knife rest slots, and food-grade natural walnut oil finish.</p>
+                        <ul class="card-specs">
+                            <li>• Timber: 100% Kiln-dried CP Teak (8-10% moisture)</li>
+                            <li>• Compatibility: Fits 450mm, 600mm &amp; 900mm Blum runners</li>
+                            <li>• Layout: 6 cutlery slots + knife block + spice well</li>
+                        </ul>
+                        <div class="card-footer">
+                            <button class="button-primary-sm add-basket-btn" data-id="cutlery-teak" data-name="Handcrafted CP Teak Cutlery Tray" data-price="4800" data-finish="Seasoned CP Teak" data-img="https://images.unsplash.com/photo-1590794056226-79ef3a8147e1?auto=format&fit=crop&w=400&q=80">+ Add to Basket</button>
+                            <button class="button-ghost-sm product-consult-btn" data-product="Handcrafted CP Teak Cutlery Tray">Ask Studio ↗</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 3. Motion-Sensor Filterless T-Shape Chimney -->
+                <article class="catalog-card" data-category="chimneys">
+                    <div class="card-media">
+                        <img src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=800&q=80" alt="Motion Sensor Filterless Kitchen Chimney" loading="lazy">
+                        <span class="card-badge">Chimney &amp; Hood</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-header-row">
+                            <h3 class="card-title">Filterless Motion-Sensor Chimney</h3>
+                            <span class="card-price">₹19,500</span>
+                        </div>
+                        <p class="card-desc">Touch-free gesture controlled extraction chimney with 1500 m³/hr suction capacity, thermal auto-clean, and dual LED spotlights.</p>
+                        <ul class="card-specs">
+                            <li>• Suction: 1500 m³/hr heavy Indian tadka extraction</li>
+                            <li>• Control: Wave gesture motion sensor + touch display</li>
+                            <li>• Maintenance: Thermal oil collector tray (Filterless)</li>
+                        </ul>
+                        <div class="card-footer">
+                            <button class="button-primary-sm add-basket-btn" data-id="chimney-motion" data-name="Filterless Motion-Sensor Chimney" data-price="19500" data-finish="Matte Black Stainless" data-img="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=400&q=80">+ Add to Basket</button>
+                            <button class="button-ghost-sm product-consult-btn" data-product="Filterless Motion-Sensor Chimney">Ask Studio ↗</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 4. Built-in Multi-Function Convection Oven -->
+                <article class="catalog-card" data-category="ovens">
+                    <div class="card-media">
+                        <img src="assets/kitchen-gallery-walnut.png" alt="Built-in Convection Oven" loading="lazy">
+                        <span class="card-badge">Built-in Oven</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-header-row">
+                            <h3 class="card-title">Convection Built-in Oven (70L)</h3>
+                            <span class="card-price">₹36,000</span>
+                        </div>
+                        <p class="card-desc">70-litre capacity built-in multi-mode convection oven with motorized rotisserie, quadruple glazed cool-touch door, and pyrolytic self-cleaning.</p>
+                        <ul class="card-specs">
+                            <li>• Modes: 10 Preset Baking, Roasting &amp; Grill cycles</li>
+                            <li>• Door: 4-layer heat-reflective cool touch glass</li>
+                            <li>• Power: 3000W A+ energy efficiency rating</li>
+                        </ul>
+                        <div class="card-footer">
+                            <button class="button-primary-sm add-basket-btn" data-id="oven-70l" data-name="Convection Built-in Oven (70L)" data-price="36000" data-finish="Black Glass &amp; Steel" data-img="assets/kitchen-gallery-walnut.png">+ Add to Basket</button>
+                            <button class="button-ghost-sm product-consult-btn" data-product="Convection Built-in Oven (70L)">Ask Studio ↗</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 5. Nano-White Calibrated Quartz Kitchen Slab (Slape) -->
+                <article class="catalog-card" data-category="slabs" id="slabs">
+                    <div class="card-media">
+                        <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" alt="Nano-White Quartz Countertop Slab Slape" loading="lazy">
+                        <span class="card-badge">Counter Slab (Slape)</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-header-row">
+                            <h3 class="card-title">Nano-White Quartz Slab (Slape)</h3>
+                            <span class="card-price">₹520 / sq ft</span>
+                        </div>
+                        <p class="card-desc">Calibrated engineered quartz slab impervious to haldi, lemon acid, and oil stains. Heat resistant up to 300°C with chamfered edge profiles.</p>
+                        <ul class="card-specs">
+                            <li>• Thickness: 20mm solid calibrated thickness</li>
+                            <li>• Edge Profiles: Chamfered, Half-Bullnose, Waterfall</li>
+                            <li>• Finish: High-gloss stain-free nano diamond polish</li>
+                        </ul>
+                        <div class="card-footer">
+                            <button class="button-primary-sm add-basket-btn" data-id="slab-quartz" data-name="Nano-White Quartz Slab (Slape)" data-price="52000" data-finish="Pure Nano-White" data-img="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=400&q=80">+ Add to Basket</button>
+                            <button class="button-ghost-sm product-consult-btn" data-product="Nano-White Quartz Slab (Slape)">Ask Studio ↗</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 6. 3-Burner Italian Sabaf Flame Hob -->
+                <article class="catalog-card" data-category="hobs">
+                    <div class="card-media">
+                        <img src="assets/kitchen-appliances-hero.png" alt="3-Burner Italian Flame Hob Stove" loading="lazy">
+                        <span class="card-badge">Stove / Gas Hob</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-header-row">
+                            <h3 class="card-title">3-Burner Italian Flame Hob</h3>
+                            <span class="card-price">₹14,200</span>
+                        </div>
+                        <p class="card-desc">Compact 3-burner toughened glass hob engineered with genuine Italian Sabaf high-efficiency brass burners for intense wok tossing and gentle simmering.</p>
+                        <ul class="card-specs">
+                            <li>• Burners: 3 Full Brass (1 Triple Ring, 1 Mini, 1 Rapid)</li>
+                            <li>• Ignition: Auto electric pulse with ergonomic metallic knobs</li>
+                            <li>• Dimensions: 750 x 450 mm · Low-profile chamfer</li>
+                        </ul>
+                        <div class="card-footer">
+                            <button class="button-primary-sm add-basket-btn" data-id="hob-3b" data-name="3-Burner Italian Flame Hob" data-price="14200" data-finish="Matte Black Glass" data-img="assets/kitchen-appliances-hero.png">+ Add to Basket</button>
+                            <button class="button-ghost-sm product-consult-btn" data-product="3-Burner Italian Flame Hob">Ask Studio ↗</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 7. Tandem Soft-Close Thali & Cookware Drawer -->
+                <article class="catalog-card" data-category="cutlery">
+                    <div class="card-media">
+                        <img src="assets/kitchen-drawer-thali.jpg" alt="Tandem Soft-Close Thali and Pot Drawer Compartment" loading="lazy">
+                        <span class="card-badge">Cutlery &amp; Drawers</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-header-row">
+                            <h3 class="card-title">Tandem Thali &amp; Deep Pan Drawer</h3>
+                            <span class="card-price">₹6,400</span>
+                        </div>
+                        <p class="card-desc">Double-walled German tandem box with adjustable thali separators, anti-slip rubber matting, and 60kg synchronized soft-close runners.</p>
+                        <ul class="card-specs">
+                            <li>• Runners: Blum Tandembox / Hettich InnoTech (60kg load)</li>
+                            <li>• Capacity: Holds 24 full-sized brass/steel thalis &amp; kadhais</li>
+                            <li>• Warranty: Lifetime warranty on hydraulic damping</li>
+                        </ul>
+                        <div class="card-footer">
+                            <button class="button-primary-sm add-basket-btn" data-id="drawer-thali" data-name="Tandem Thali &amp; Deep Pan Drawer" data-price="6400" data-finish="Smoked Anthracite" data-img="assets/kitchen-drawer-thali.jpg">+ Add to Basket</button>
+                            <button class="button-ghost-sm product-consult-btn" data-product="Tandem Thali &amp; Deep Pan Drawer">Ask Studio ↗</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 8. Articulated Blind Corner LeMans Carousel -->
+                <article class="catalog-card" data-category="storage">
+                    <div class="card-media">
+                        <img src="assets/kitchen-gallery-cream.png" alt="Articulated Blind Corner LeMans Carousel" loading="lazy">
+                        <span class="card-badge">Corner Storage</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-header-row">
+                            <h3 class="card-title">Blind Corner LeMans Trays</h3>
+                            <span class="card-price">₹28,500</span>
+                        </div>
+                        <p class="card-desc">German articulated twin-tray corner solution that glides 100% out of dead corner cabinets with hydraulic self-closing damping and anti-slip bases.</p>
+                        <ul class="card-specs">
+                            <li>• Trays: 2 Independently swinging curved trays</li>
+                            <li>• Capacity: 25kg weight capacity per shelf</li>
+                            <li>• Fitting: Soft-close damping on opening and closing</li>
+                        </ul>
+                        <div class="card-footer">
+                            <button class="button-primary-sm add-basket-btn" data-id="corner-lemans" data-name="Blind Corner LeMans Trays" data-price="28500" data-finish="Brushed Chrome &amp; Grey" data-img="assets/kitchen-gallery-cream.png">+ Add to Basket</button>
+                            <button class="button-ghost-sm product-consult-btn" data-product="Blind Corner LeMans Trays">Ask Studio ↗</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 9. 6-Tier Hydraulic Tall Pantry Larder Unit -->
+                <article class="catalog-card" data-category="storage">
+                    <div class="card-media">
+                        <img src="https://images.unsplash.com/photo-1556911073-38141963c9e0?auto=format&fit=crop&w=800&q=80" alt="Tall Pantry Larder Unit Compartments" loading="lazy">
+                        <span class="card-badge">Tall Larder Pantry</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-header-row">
+                            <h3 class="card-title">6-Tier Hydraulic Pantry Larder</h3>
+                            <span class="card-price">₹42,000</span>
+                        </div>
+                        <p class="card-desc">Full-height synchronized tall pantry unit. Opening the cabinet door effortlessly glides the rear baskets forward for 100% visibility of dry groceries and spices.</p>
+                        <ul class="card-specs">
+                            <li>• Baskets: 12 Baskets (6 on door + 6 interior pull-outs)</li>
+                            <li>• Construction: Chrome plated SS 304 with timber bases</li>
+                            <li>• Height: Adjustable from 1900mm to 2200mm</li>
+                        </ul>
+                        <div class="card-footer">
+                            <button class="button-primary-sm add-basket-btn" data-id="pantry-6t" data-name="6-Tier Hydraulic Pantry Larder" data-price="42000" data-finish="SS 304 &amp; Teak Base" data-img="https://images.unsplash.com/photo-1556911073-38141963c9e0?auto=format&fit=crop&w=400&q=80">+ Add to Basket</button>
+                            <button class="button-ghost-sm product-consult-btn" data-product="6-Tier Hydraulic Pantry Larder">Ask Studio ↗</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 10. Black Galaxy Granite Slab with Waterfall Profile -->
+                <article class="catalog-card" data-category="slabs">
+                    <div class="card-media">
+                        <img src="assets/kitchen-black-granite-slab.jpg" alt="Black Galaxy Natural Granite Kitchen Slab Slape" loading="lazy">
+                        <span class="card-badge">Counter Slab (Slape)</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-header-row">
+                            <h3 class="card-title">Black Galaxy Granite Slab</h3>
+                            <span class="card-price">₹380 / sq ft</span>
+                        </div>
+                        <p class="card-desc">First-grade natural Black Galaxy granite featuring golden-bronze mica flecks. Diamond polished, chamfered, and seal-coated for zero grease penetration.</p>
+                        <ul class="card-specs">
+                            <li>• Density: High specific gravity natural dense granite</li>
+                            <li>• Scratch Proof: Mohs hardness 7 (Unscratchable by knives)</li>
+                            <li>• Edge Profiles: Full Bullnose, Mitred Waterfall</li>
+                        </ul>
+                        <div class="card-footer">
+                            <button class="button-primary-sm add-basket-btn" data-id="slab-granite" data-name="Black Galaxy Granite Slab" data-price="38000" data-finish="Deep Black with Gold Flecks" data-img="assets/kitchen-black-granite-slab.jpg">+ Add to Basket</button>
+                            <button class="button-ghost-sm product-consult-btn" data-product="Black Galaxy Granite Slab">Ask Studio ↗</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 11. Curved Glass Baffle-Filter Island Chimney -->
+                <article class="catalog-card" data-category="chimneys">
+                    <div class="card-media">
+                        <img src="assets/kitchen-gallery-moss.png" alt="Curved Glass Island Chimney" loading="lazy">
+                        <span class="card-badge">Chimney &amp; Hood</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-header-row">
+                            <h3 class="card-title">Curved Glass Island Chimney</h3>
+                            <span class="card-price">₹24,800</span>
+                        </div>
+                        <p class="card-desc">Ceiling-suspended island chimney with arched toughened glass hood, heavy-gauge stainless steel baffle filters, and silent brushless DC copper motor.</p>
+                        <ul class="card-specs">
+                            <li>• Suction: 1350 m³/hr with 3-speed soft touch control</li>
+                            <li>• Filtration: Patented SS 304 dual baffle filters</li>
+                            <li>• Lighting: 4 Warm LED perimeter downlights</li>
+                        </ul>
+                        <div class="card-footer">
+                            <button class="button-primary-sm add-basket-btn" data-id="chimney-island" data-name="Curved Glass Island Chimney" data-price="24800" data-finish="Brushed Steel &amp; Glass" data-img="assets/kitchen-gallery-moss.png">+ Add to Basket</button>
+                            <button class="button-ghost-sm product-consult-btn" data-product="Curved Glass Island Chimney">Ask Studio ↗</button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 12. Under-Sink Waste & Detergent Pull-Out Station -->
+                <article class="catalog-card" data-category="storage">
+                    <div class="card-media">
+                        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=800&q=80" alt="Under-Sink Waste and Detergent Station" loading="lazy">
+                        <span class="card-badge">Under-Sink Storage</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-header-row">
+                            <h3 class="card-title">Under-Sink Waste Station</h3>
+                            <span class="card-price">₹8,900</span>
+                        </div>
+                        <p class="card-desc">Moisture-proof stainless steel under-sink pull-out unit featuring dual wet/dry segregation bins, bottle organizer caddy, and drip tray.</p>
+                        <ul class="card-specs">
+                            <li>• Bins: Dual 14L + 14L removable odour-sealed bins</li>
+                            <li>• Protection: Marine-grade SS 304 bottom water drip tray</li>
+                            <li>• Runners: Heavy-duty 45kg bottom-mounted soft-close</li>
+                        </ul>
+                        <div class="card-footer">
+                            <button class="button-primary-sm add-basket-btn" data-id="sink-waste" data-name="Under-Sink Waste Station" data-price="8900" data-finish="Stainless Steel 304" data-img="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=400&q=80">+ Add to Basket</button>
+                            <button class="button-ghost-sm product-consult-btn" data-product="Under-Sink Waste Station">Ask Studio ↗</button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Interactive Cutlery Drawer Configurator Studio -->
+        <section class="drawer-studio-section" id="drawer-studio">
+            <div class="container-wide">
+                <div class="drawer-studio-header">
+                    <p class="eyebrow">Interactive Studio Tool</p>
+                    <h2>Custom Cutlery Drawer<br><em>Configurator.</em></h2>
                     <p class="lead-copy">
-                        Select signature furniture pieces manufactured in our Saharanpur workshops. Add items to your inquiry list, customize timber finish, and request a bespoke studio quote.
+                        Design your modular kitchen drawer in real time. Choose your drawer width, select your handcrafted Saharanpur teak inserts, and view the immediate top-down layout and quote.
                     </p>
                 </div>
 
-                <div class="catalog-grid" data-reveal="stagger">
-                    <div class="catalog-item-card">
-                        <div class="catalog-item-img">
-                            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=600&q=80" alt="Royal Saharanpur Teak Dining Set" loading="lazy">
+                <div class="drawer-studio-grid">
+                    <!-- Visual Drawer Layout Canvas Container -->
+                    <div class="drawer-visual-wrapper">
+                        <div class="drawer-box" id="drawer-visual-box" data-width="600">
+                            <div class="drawer-rim drawer-rim-top"></div>
+                            <div class="drawer-interior" id="drawer-slots-container">
+                                <!-- Slots dynamically populated by script.js -->
+                            </div>
+                            <div class="drawer-handle-simulation"></div>
                         </div>
-                        <div class="catalog-item-body">
-                            <div>
-                                <span class="catalog-item-wood">CP Teakwood · 6 Seater</span>
-                                <h3 class="catalog-item-title">Royal Saharanpur Dining Set</h3>
-                                <p class="catalog-item-desc">Solid teak tabletop with brass corner brackets and 6 hand-upholstered ergonomically sculpted chairs.</p>
-                            </div>
-                            <div class="catalog-item-footer">
-                                <span class="catalog-price">₹1,45,000</span>
-                                <button class="add-to-order-btn">+ Add to List</button>
-                            </div>
+                        <div class="drawer-dimension-indicator">
+                            <span id="drawer-width-label">Drawer Width: 600 mm (Standard Blum Tandembox)</span>
                         </div>
                     </div>
 
-                    <div class="catalog-item-card">
-                        <div class="catalog-item-img">
-                            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=600&q=80" alt="Handcarved Sheesham Jali Screen" loading="lazy">
-                        </div>
-                        <div class="catalog-item-body">
-                            <div>
-                                <span class="catalog-item-wood">Indian Sheesham Wood</span>
-                                <h3 class="catalog-item-title">Handcarved Jali Partition</h3>
-                                <p class="catalog-item-desc">4-fold room divider hand-chiselled with traditional Saharanpur floral openwork jaali lattice.</p>
-                            </div>
-                            <div class="catalog-item-footer">
-                                <span class="catalog-price">₹38,000</span>
-                                <button class="add-to-order-btn">+ Add to List</button>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Configurator Controls -->
+                    <div class="drawer-controls-card">
+                        <h3 class="controls-title">Drawer Specifications</h3>
 
-                    <div class="catalog-item-card">
-                        <div class="catalog-item-img">
-                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="Fluted Brass & Teak Credenza" loading="lazy">
-                        </div>
-                        <div class="catalog-item-body">
-                            <div>
-                                <span class="catalog-item-wood">Teak &amp; Patinated Brass</span>
-                                <h3 class="catalog-item-title">Fluted Brass Credenza</h3>
-                                <p class="catalog-item-desc">6-foot living room media console with push-to-open fluted timber doors and solid brass plinth base.</p>
-                            </div>
-                            <div class="catalog-item-footer">
-                                <span class="catalog-price">₹52,000</span>
-                                <button class="add-to-order-btn">+ Add to List</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="catalog-item-card">
-                        <div class="catalog-item-img">
-                            <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=600&q=80" alt="Solid Teak Platform Bed" loading="lazy">
-                        </div>
-                        <div class="catalog-item-body">
-                            <div>
-                                <span class="catalog-item-wood">CP Teakwood · King Size</span>
-                                <h3 class="catalog-item-title">Solid Teak Platform Bed</h3>
-                                <p class="catalog-item-desc">Minimalist floating platform frame with integrated bedside power conduits and upholstered head cushion.</p>
-                            </div>
-                            <div class="catalog-item-footer">
-                                <span class="catalog-price">₹92,000</span>
-                                <button class="add-to-order-btn">+ Add to List</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 3D & Augmented Reality (AR) Studio -->
-            <section class="showcase-section section-pad" id="showcase">
-                <div class="container-wide showcase-layout">
-                    <div class="showcase-info" data-reveal>
-                        <p class="eyebrow">3D Interactive &amp; Camera AR Studio</p>
-                        <h2 class="heading-section">
-                            Inspect in 3D.<br>
-                            <em>Project into your home.</em>
-                        </h2>
-                        <p class="lead-copy">
-                            Switch between our signature Saharanpur Living Room, Modular Kitchen, and Master Bedroom in real-time WebGL. Test the dynamic light physics or launch the <strong>Augmented Reality (AR)</strong> camera view to place furniture into your own space!
-                        </p>
-
-                        <div style="display: flex; flex-direction: column; gap: 14px; margin: 28px 0 36px;">
-                            <div style="display: flex; align-items: center; gap: 12px; font-family: var(--font-mono); font-size: 11px;">
-                                <span style="color: var(--color-terracotta);">✦</span>
-                                <span><strong>Multi-Room 3D Switcher:</strong> Living, Kitchen &amp; Bedroom</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 12px; font-family: var(--font-mono); font-size: 11px;">
-                                <span style="color: var(--color-brass);">✦</span>
-                                <span><strong>Pendulum Light Physics:</strong> Swinging lamp with dynamic shadows</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 12px; font-family: var(--font-mono); font-size: 11px;">
-                                <span style="color: #2ECC71;">✦</span>
-                                <span><strong>Camera-Based AR View:</strong> Point phone camera at floor to place 3D furniture</span>
+                        <!-- Width Selector -->
+                        <div class="config-group">
+                            <label class="config-label">01 / Choose Tandem Drawer Width</label>
+                            <div class="pill-options-row">
+                                <button class="pill-choice-btn" data-drawer-width="450">450 mm (Compact)</button>
+                                <button class="pill-choice-btn active" data-drawer-width="600">600 mm (Standard)</button>
+                                <button class="pill-choice-btn" data-drawer-width="900">900 mm (Wide Island)</button>
                             </div>
                         </div>
 
-                        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-                            <button class="button-primary" id="toggle-ar-mode">
-                                <span>View in AR 📸</span>
-                            </button>
-                            <button class="physics-toggle-btn" id="toggle-physics">
-                                <span>Swing Brass Lamp (Physics) ✦</span>
+                        <!-- Modular Inserts Toggle -->
+                        <div class="config-group">
+                            <label class="config-label">02 / Select Modular Teak &amp; Steel Inserts</label>
+                            <div class="insert-toggle-list">
+                                <label class="insert-checkbox-row">
+                                    <input type="checkbox" id="insert-cutlery" checked data-addon-name="Solid Teak Cutlery Tray (Spoons &amp; Forks)" data-addon-price="2400">
+                                    <span class="checkbox-custom"></span>
+                                    <div class="insert-info">
+                                        <strong>Solid Teak Cutlery Tray</strong>
+                                        <span>4-Slot fork, spoon, teaspoon compartments</span>
+                                    </div>
+                                    <span class="insert-price">+ ₹2,400</span>
+                                </label>
+
+                                <label class="insert-checkbox-row">
+                                    <input type="checkbox" id="insert-knife" checked data-addon-name="Saharanpur Teak Knife Block" data-addon-price="1600">
+                                    <span class="checkbox-custom"></span>
+                                    <div class="insert-info">
+                                        <strong>Artisan Knife Rest Block</strong>
+                                        <span>6-Slot angled solid wood knife separator</span>
+                                    </div>
+                                    <span class="insert-price">+ ₹1,600</span>
+                                </label>
+
+                                <label class="insert-checkbox-row">
+                                    <input type="checkbox" id="insert-spice" checked data-addon-name="Brass Masala Spice Jar Organizers" data-addon-price="1800">
+                                    <span class="checkbox-custom"></span>
+                                    <div class="insert-info">
+                                        <strong>Masala Spice Jar Steps</strong>
+                                        <span>Stepped 3-tier holder for 12 Indian spice jars</span>
+                                    </div>
+                                    <span class="insert-price">+ ₹1,800</span>
+                                </label>
+
+                                <label class="insert-checkbox-row">
+                                    <input type="checkbox" id="insert-belan" data-addon-name="Chakla-Belan &amp; Tawa Grooves" data-addon-price="1200">
+                                    <span class="checkbox-custom"></span>
+                                    <div class="insert-info">
+                                        <strong>Chakla-Belan &amp; Tawa Dock</strong>
+                                        <span>Recessed groove for Indian round marble board</span>
+                                    </div>
+                                    <span class="insert-price">+ ₹1,200</span>
+                                </label>
+
+                                <label class="insert-checkbox-row">
+                                    <input type="checkbox" id="insert-foil" data-addon-name="Aluminium Foil &amp; Cling Cutter" data-addon-price="1400">
+                                    <span class="checkbox-custom"></span>
+                                    <div class="insert-info">
+                                        <strong>Foil &amp; Cling Film Dispenser</strong>
+                                        <span>Integrated sliding safety blade cutter</span>
+                                    </div>
+                                    <span class="insert-price">+ ₹1,400</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Drawer Total & Action -->
+                        <div class="drawer-summary-box">
+                            <div class="summary-line">
+                                <span>Estimated Drawer Cost:</span>
+                                <strong class="summary-total" id="drawer-total-price">₹5,800</strong>
+                            </div>
+                            <button class="button-primary" id="add-configured-drawer-btn" style="width: 100%; justify-content: center;">
+                                <span>+ Add Custom Drawer to Quote Basket</span>
                             </button>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
 
-                    <!-- 3D Viewport with AR Camera Overlay -->
-                    <div class="scene-viewport-wrapper" data-reveal>
-                        <!-- AR Camera Live Feed Container -->
-                        <div class="ar-camera-container" id="ar-camera-container">
-                            <video id="ar-video-feed" autoplay playsinline muted></video>
-                            <div class="ar-reticle"></div>
-                            <div class="ar-badge-prompt">Point camera at floor &amp; drag to place furniture</div>
-                        </div>
+        <!-- 3D WebGL Studio & Camera AR Viewport -->
+        <section class="studio-section" id="studio">
+            <div class="studio-copy reveal">
+                <p class="eyebrow">02 / Live 3D Kitchen Studio &amp; AR</p>
+                <h2>See your choices<br><em>come to life.</em></h2>
+                <p>
+                    Inspect the calibrated quartz countertop slab, built-in 4-burner glass stove hob, undermount sink, and soft-close cutlery drawer compartments in interactive 3D. Toggle finishes, adjust lighting physics, or use your camera to place the setup in your room.
+                </p>
+                <div class="studio-legend">
+                    <span><i></i> Real-time 3D WebGL Rendering</span>
+                    <span><i></i> Dynamic Pendulum Light Physics</span>
+                    <span><i></i> Mobile Camera AR Placement</span>
+                </div>
+            </div>
 
-                        <div id="scene-container" role="region" aria-label="Interactive 3D living room and AR studio"></div>
+            <div class="studio-panel">
+                <div class="studio-view" id="studio-view">
+                    <!-- AR Camera Video Feed -->
+                    <video id="ar-camera" autoplay playsinline muted></video>
 
-                        <!-- Top HUD Bar -->
-                        <div class="scene-top-hud">
-                            <div class="scene-hint-badge">
-                                <span style="color: var(--color-terracotta);">✦</span>
-                                <span>Drag to Orbit / Scroll to Zoom</span>
-                            </div>
-                            <div class="scene-top-actions">
-                                <button class="scene-action-btn active" data-3d-room="living">Living</button>
-                                <button class="scene-action-btn" data-3d-room="kitchen">Kitchen</button>
-                                <button class="scene-action-btn" data-3d-room="bedroom">Bedroom</button>
-                                <button class="scene-action-btn" id="toggle-scene-fs">Expand ⤢</button>
-                            </div>
-                        </div>
+                    <!-- Three.js 3D Viewport -->
+                    <div id="scene-container" role="region" aria-label="Interactive 3D modular kitchen and AR studio"></div>
 
-                        <!-- Bottom HUD Controls -->
-                        <div class="scene-controls-hud">
-                            <div class="hud-control-group" role="group" aria-label="Atmosphere lighting">
-                                <button data-scene="day" class="hud-pill-btn active">Daylight</button>
-                                <button data-scene="dusk" class="hud-pill-btn">Evening Dusk</button>
-                                <button data-scene="night" class="hud-pill-btn">Night Gold</button>
-                            </div>
+                    <!-- Interactive 3D Tooltip -->
+                    <div id="scene-tooltip">
+                        <div class="tooltip-title"></div>
+                        <div class="tooltip-spec"></div>
+                    </div>
+
+                    <!-- AR Status Badge -->
+                    <div class="ar-status" id="ar-status">
+                        <span style="color: var(--color-terracotta);">✦</span>
+                        <span>3D Studio Ready · Orbit: Drag · Zoom: Scroll</span>
+                    </div>
+
+                    <!-- Top 3D Layout Switcher -->
+                    <div class="scene-top-hud">
+                        <div class="scene-top-actions">
+                            <button class="scene-action-btn active" data-3d-room="island">Island Kitchen</button>
+                            <button class="scene-action-btn" data-3d-room="lshape">L-Shape Corner</button>
+                            <button class="scene-action-btn" data-3d-room="parallel">Parallel Galley</button>
                         </div>
                     </div>
-                </div>
-            </section>
 
-            <!-- Before & After Renovation Slider -->
-            <section class="before-after-section section-pad container-wide" id="before-after">
-                <div data-reveal>
-                    <p class="eyebrow">Architectural Renovation</p>
-                    <h2 class="heading-section">
-                        Raw Brickwork to<br>
-                        <em>Handcrafted Sanctuary.</em>
-                    </h2>
+                    <!-- Lighting Controls HUD -->
+                    <div class="scene-lighting-hud">
+                        <button data-scene="day" class="hud-pill-btn active">Daylight</button>
+                        <button data-scene="dusk" class="hud-pill-btn">Evening Dusk</button>
+                        <button data-scene="night" class="hud-pill-btn">Golden Night</button>
+                    </div>
+                </div>
+
+                <!-- Studio Options Swatches -->
+                <div class="studio-options">
+                    <fieldset>
+                        <legend>Cabinet Finish</legend>
+                        <button class="swatch active" data-cabinet="#5C3317" style="--swatch:#5C3317">Saharanpur Teak</button>
+                        <button class="swatch" data-cabinet="#697b62" style="--swatch:#697b62">Moss Green</button>
+                        <button class="swatch" data-cabinet="#E5DDD0" style="--swatch:#E5DDD0">Ivory Cream</button>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Counter Slab (Slape)</legend>
+                        <button class="floor-choice active" data-slab="quartz">Nano-White Quartz</button>
+                        <button class="floor-choice" data-slab="granite">Galaxy Granite</button>
+                        <button class="floor-choice" data-slab="porcelain">Calacatta Gold</button>
+                    </fieldset>
+                    <button class="camera-button" id="camera-button">▣ View with Mobile Camera (AR)</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Before & After Transformation Slider -->
+        <section class="before-after-section" id="before-after">
+            <div class="container-wide">
+                <div class="before-after-heading">
+                    <p class="eyebrow">Kitchen Transformation</p>
+                    <h2>Raw builder shell to<br><em>polished slabs, stoves &amp; cutlery.</em></h2>
                     <p class="lead-copy">
-                        Drag the comparison handle to reveal how Sushil Interior converted a raw concrete shell into a seasoned teakwood masterpiece with concealed lighting and Italian marble.
+                        Drag the comparison handle to reveal how Sushil Interior converts a bare brick masonry shell into an impeccably organized modular cooking space fitted with calibrated quartz slape, built-in 4-burner glass stove hob, and soft-close cutlery drawer compartments.
                     </p>
                 </div>
 
-                <div class="before-after-wrapper" data-reveal data-cursor="DRAG">
+                <div class="before-after-wrapper" data-cursor="DRAG">
+                    <!-- Completed Luxury Installation -->
                     <div class="before-after-img">
-                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85" alt="Completed Sushil Interior Teak Residence" loading="lazy">
-                        <span class="slider-badge slider-badge-after">Completed / Handcrafted</span>
+                        <img src="assets/kitchen-appliances-hero.png" alt="Completed Sushil Interior Modular Kitchen Installation" loading="lazy">
+                        <span class="slider-badge slider-badge-after">Completed / Slabs, Stoves &amp; Cutlery</span>
                     </div>
+
+                    <!-- Raw Builder Shell (Before) -->
                     <div class="before-after-overlay">
-                        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1600&q=85" alt="Raw space before architectural renovation" loading="lazy">
-                        <span class="slider-badge slider-badge-before">Raw Shell / Before</span>
+                        <img src="https://images.unsplash.com/photo-1588854337236-6889d631faa8?auto=format&amp;fit=crop&amp;w=1600&amp;q=85" alt="Raw builder kitchen masonry shell before modular installation" loading="lazy">
+                        <span class="slider-badge slider-badge-before">Raw Builder Shell / Before</span>
                     </div>
+
+                    <!-- Interactive Drag Handle -->
                     <div class="slider-handle" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <polyline points="15 18 9 12 15 6"></polyline>
@@ -621,264 +817,399 @@
                         </svg>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Project Estimator in INR -->
-            <section class="estimator-section section-pad container-wide" id="estimator">
-                <div data-reveal>
-                    <p class="eyebrow">Investment Calculator · Indian Rupees (₹)</p>
-                    <h2 class="heading-section">
-                        Estimate Your<br>
-                        <em>Interior Budget.</em>
-                    </h2>
+        <!-- Instant Kitchen Cost & Appliance Estimator in INR -->
+        <section class="estimator-section" id="estimator">
+            <div class="container-wide">
+                <div class="estimator-heading">
+                    <p class="eyebrow">Kitchen Estimator · Indian Rupees (₹)</p>
+                    <h2>Calculate your<br><em>slabs, stoves &amp; cutlery budget.</em></h2>
                     <p class="lead-copy">
-                        Configure your property scale to calculate an immediate turnkey estimate including woodworking, modular kitchen, and architectural supervision.
+                        Configure your kitchen counter slab (slape), built-in stove hob, cutlery organizers, and extraction chimney to calculate an immediate estimate with professional Saharanpur &amp; Dehradun installation.
                     </p>
                 </div>
 
-                <div class="estimator-card" id="project-estimator" data-reveal>
+                <div class="estimator-card" id="project-estimator">
                     <div class="estimator-steps-wrapper">
-                        <div class="estimator-step" data-step="scope">
-                            <span class="step-label">01 / Project Scope</span>
+                        <!-- Step 1: Counter Slab -->
+                        <div class="estimator-step" data-step="slab">
+                            <span class="step-label">01 / Kitchen Countertop Slab (Slape)</span>
                             <div class="step-options">
-                                <button class="estimator-choice selected" data-val="full">Full 3BHK / 4BHK Turnkey</button>
-                                <button class="estimator-choice" data-val="kitchen">Modular Island Kitchen</button>
-                                <button class="estimator-choice" data-val="villa">Luxury Kothi / Independent Villa</button>
+                                <button class="estimator-choice selected" data-val="quartz">Nano-White Quartz Slab</button>
+                                <button class="estimator-choice" data-val="granite">Black Galaxy Natural Granite</button>
+                                <button class="estimator-choice" data-val="porcelain">Imported Italian Porcelain</button>
                             </div>
                         </div>
 
-                        <div class="estimator-step" data-step="size">
-                            <span class="step-label">02 / Built-up Area</span>
+                        <!-- Step 2: Stove / Hob -->
+                        <div class="estimator-step" data-step="stove">
+                            <span class="step-label">02 / Built-in Stove &amp; Gas Hob</span>
                             <div class="step-options">
-                                <button class="estimator-choice" data-val="small">Under 1,500 sq ft</button>
-                                <button class="estimator-choice selected" data-val="medium">1,500 – 3,000 sq ft</button>
-                                <button class="estimator-choice" data-val="large">3,000+ sq ft (Estate)</button>
+                                <button class="estimator-choice selected" data-val="4burner">4-Burner Toughened Glass Hob</button>
+                                <button class="estimator-choice" data-val="3burner">3-Burner Italian Sabaf Flame</button>
+                                <button class="estimator-choice" data-val="hybrid">Hybrid Induction + Gas Domino</button>
                             </div>
                         </div>
 
-                        <div class="estimator-step" data-step="timeline">
-                            <span class="step-label">03 / Target Delivery</span>
+                        <!-- Step 3: Cutlery & Drawer Tier -->
+                        <div class="estimator-step" data-step="compartments">
+                            <span class="step-label">03 / Cutlery &amp; Storage Compartments</span>
                             <div class="step-options">
-                                <button class="estimator-choice selected" data-val="standard">Standard (60–90 Days)</button>
-                                <button class="estimator-choice" data-val="flexible">Phased / Flexible</button>
+                                <button class="estimator-choice" data-val="standard">Standard Tandem Drawer Boxes</button>
+                                <button class="estimator-choice selected" data-val="tandem">Tandem Drawers + Teak Cutlery Trays</button>
+                                <button class="estimator-choice" data-val="bespoke">Bespoke Legrabox + LeMans + 6-Tier Pantry</button>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Extraction Chimney -->
+                        <div class="estimator-step" data-step="chimney">
+                            <span class="step-label">04 / Kitchen Chimney &amp; Ventilation</span>
+                            <div class="step-options">
+                                <button class="estimator-choice selected" data-val="motion">1500 m³/hr Motion-Sensor Filterless</button>
+                                <button class="estimator-choice" data-val="curved">1350 m³/hr Curved Glass Baffle</button>
+                                <button class="estimator-choice" data-val="island">Island Suspended Extraction Hood</button>
                             </div>
                         </div>
                     </div>
 
-                    <div class="estimator-readout">
-                        <span class="readout-header">Indicative Turnkey Estimate</span>
-                        <div class="readout-metric">
-                            <span class="readout-label">Estimated Investment Scope</span>
-                            <span class="readout-val" id="est-investment">₹14 Lakhs — ₹32 Lakhs</span>
+                    <!-- Estimator Output Readout -->
+                    <div class="estimator-readout-panel">
+                        <div class="readout-block">
+                            <span class="readout-label">Estimated Investment:</span>
+                            <div class="readout-figure" id="est-investment">₹1.45 Lakhs — ₹2.20 Lakhs</div>
+                            <span class="readout-sub">Includes fabrication, precision sink/hob routing &amp; fitting</span>
                         </div>
-                        <div class="readout-metric">
-                            <span class="readout-label">Projected Delivery Timeline</span>
-                            <span class="readout-val" id="est-duration">10 — 18 Weeks</span>
+
+                        <div class="readout-block">
+                            <span class="readout-label">Delivery &amp; Installation:</span>
+                            <div class="readout-figure" id="est-duration">3 — 4 Weeks</div>
+                            <span class="readout-sub">Direct delivery from Saharanpur workshop to your residence</span>
                         </div>
-                        <p class="readout-note">
-                            Includes 100% seasoned CP Teak/Sheesham, German Hettich fittings, on-site installation, and 10-year structural warranty.
-                        </p>
-                        <button class="button-primary" id="est-prefill">
-                            <span>Pre-fill in Inquiry</span>
-                            <span class="arrow">↓</span>
+
+                        <button class="button-primary" id="est-prefill" style="width: 100%; justify-content: center;">
+                            <span>Pre-fill Consultation Request Below</span>
+                            <span>↓</span>
                         </button>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- Contact Studio & Booking -->
-            <section class="contact-section section-pad" id="contact">
-                <div class="container-wide contact-layout">
-                    <div class="contact-info-side" data-reveal>
-                        <p class="eyebrow">Initiate Collaboration</p>
-                        <h2 class="contact-heading">
-                            Let's make room<br>
-                            <em>for sacred living.</em>
-                        </h2>
-                        <p class="lead-copy" style="color: rgba(255,255,255,0.85);">
-                            Visit our Saharanpur workshop or schedule an architectural consultation at our Dehradun design studio. We cater exclusively to Saharanpur and Dehradun residences.
-                        </p>
-
-                        <div class="contact-studios-grid">
-                            <div class="studio-loc-card">
-                                <span class="loc-title">Saharanpur Works &amp; Showroom</span>
-                                <span class="loc-time">10:00 AM – 8:00 PM IST</span>
-                                <p class="loc-address">
-                                    Court Road, Near Gill Colony<br>
-                                    Saharanpur, Uttar Pradesh 247001<br>
-                                    <a href="tel:+919876543210" class="loc-contact-link">📞 +91 98765 43210</a>
-                                </p>
-                            </div>
-
-                            <div class="studio-loc-card">
-                                <span class="loc-title">Dehradun Design Studio</span>
-                                <span class="loc-time">10:00 AM – 7:30 PM IST</span>
-                                <p class="loc-address">
-                                    Rajpur Road, Near Jakhan<br>
-                                    Dehradun, Uttarakhand 248001<br>
-                                    <a href="tel:+919876543210" class="loc-contact-link">📞 +91 98765 43210</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Consultation Inquiry Form -->
-                    <div class="contact-form-side" data-reveal>
-                        <h3 class="form-title">Request Studio Consultation</h3>
-                        <form class="inquiry-form" id="inquiry-form">
-                            <div class="form-row-dual">
-                                <div class="form-field">
-                                    <label for="field-name">Your Full Name</label>
-                                    <input type="text" id="field-name" name="name" required placeholder="Rajesh Singhal">
-                                </div>
-                                <div class="form-field">
-                                    <label for="field-email">Phone or Email</label>
-                                    <input type="text" id="field-email" name="contact" required placeholder="+91 98765 00000">
-                                </div>
-                            </div>
-
-                            <div class="form-row-dual">
-                                <div class="form-field">
-                                    <label for="field-service">Project Category</label>
-                                    <select id="field-service" name="service">
-                                        <option value="full-residential">Turnkey 3BHK / 4BHK Residence</option>
-                                        <option value="modular-kitchen">Modular Island Kitchen</option>
-                                        <option value="turnkey-villa">Luxury Kothi / Villa</option>
-                                        <option value="mandir">Bespoke Teak Mandir / Pooja Room</option>
-                                    </select>
-                                </div>
-                                <div class="form-field">
-                                    <label for="field-location">City / Location</label>
-                                    <input type="text" id="field-location" name="location" placeholder="e.g. Saharanpur or Dehradun">
-                                </div>
-                            </div>
-
-                            <div class="form-field">
-                                <label for="field-message">Project Notes &amp; Woodcraft Requirements</label>
-                                <textarea id="field-message" name="message" rows="4" placeholder="Tell us about the property stage, required woodwork, and desired timeline..."></textarea>
-                            </div>
-
-                            <div class="form-actions-stack">
-                                <button type="submit" class="button-primary submit-inquiry-btn" style="width: 100%;">
-                                    <span>Send Consultation Request</span>
-                                    <span class="arrow">→</span>
-                                </button>
-                            </div>
-
-                            <p class="form-privacy-note">
-                                Respecting client privacy: We never share drawings, floor plans, or contact information with third parties.
-                            </p>
-                        </form>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- Site Footer -->
-        <footer class="site-footer">
+        <!-- 4-Pillar Craft & Engineering Standard -->
+        <section class="craft-section" id="craft">
             <div class="container-wide">
-                <div class="footer-top">
-                    <div class="footer-brand-side">
-                        <a class="brand footer-brand" href="#top">
-                            <span class="brand-mark">SI</span>
-                            <div class="brand-text">
-                                <span class="brand-name" style="color: #FFFFFF;">Sushil Interior</span>
-                                <span class="brand-tagline">Saharanpur &amp; Dehradun</span>
-                            </div>
-                        </a>
-                        <p class="footer-desc">
-                            Bespoke architectural woodworking, modular kitchens, and handcrafted living spaces. Exclusively serving Saharanpur and Dehradun.
-                        </p>
+                <p class="eyebrow">The 4-Pillar Quality Protocol</p>
+                <h2>Our woodcraft &amp; appliance engineering standard.</h2>
+
+                <div class="craft-steps-grid">
+                    <div class="craft-step-card">
+                        <span class="craft-step-num">01 / SCIENTIFIC SEASONING</span>
+                        <h3 class="craft-step-title">Kiln-Dried CP Teak</h3>
+                        <p class="craft-step-body">All raw Central Province (CP) Teak undergoes 45 days in thermal kiln chambers, reducing moisture to a strict 8–10%. This guarantees zero warping, swelling, or cracking across Indian monsoons and kitchen steam.</p>
                     </div>
 
-                    <div class="footer-nav-columns">
-                        <div class="footer-col">
-                            <span class="footer-col-title">Spaces</span>
-                            <ul class="footer-links-list">
-                                <li><a href="#rooms">Whole House Interiors</a></li>
-                                <li><a href="#catalog">Custom Furniture Catalog</a></li>
-                                <li><a href="#showcase">3D &amp; AR Studio</a></li>
-                                <li><a href="#before-after">Transformations</a></li>
-                                <li><a href="about.html">About Heritage</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="footer-col">
-                            <span class="footer-col-title">Studios &amp; Workshops</span>
-                            <ul class="footer-links-list">
-                                <li><a href="tel:+919876543210">+91 98765 43210</a></li>
-                                <li><a href="#contact">Studio Consultation ↗</a></li>
-                                <li><span>Court Road, Saharanpur, UP</span></li>
-                                <li><span>Rajpur Road, Dehradun, UK</span></li>
-                            </ul>
-                        </div>
+                    <div class="craft-step-card">
+                        <span class="craft-step-num">02 / HAND CHISELLED</span>
+                        <h3 class="craft-step-title">Cutlery &amp; Spice Inserts</h3>
+                        <p class="craft-step-body">Our master Saharanpur artisans hand-finish solid teak cutlery inserts, spice compartments, and knife rests, bringing organic timber warmth and anti-fungal hygiene into modern culinary ergonomics.</p>
                     </div>
-                </div>
 
-                <div class="footer-bottom">
-                    <span>© 2024 Sushil Interior (Saharanpur, UP). All rights reserved.</span>
-                    <span>Handcrafted in the Wood City of India</span>
-                    <span>Privacy Policy &amp; Terms</span>
+                    <div class="craft-step-card">
+                        <span class="craft-step-num">03 / GERMAN PRECISION</span>
+                        <h3 class="craft-step-title">Blum &amp; Hettich Runners</h3>
+                        <p class="craft-step-body">We pair traditional hardwoods with German Blum Legrabox soft-close runners, Aventos bi-fold hydraulic overhead lifts, and anti-slip corner LeMans pull-out systems tested to 100,000 opening cycles.</p>
+                    </div>
+
+                    <div class="craft-step-card">
+                        <span class="craft-step-num">04 / WHITE GLOVE</span>
+                        <h3 class="craft-step-title">Saharanpur &amp; Dehradun Setup</h3>
+                        <p class="craft-step-body">From our Saharanpur workshop and Dehradun design studio, every kitchen setup is dispatched in moisture-proof crates with white-glove on-site installation by our own master Karigars.</p>
+                    </div>
                 </div>
             </div>
-        </footer>
-    </div>
+        </section>
 
-    <!-- Order Listing & Quote Cart Drawer Modal -->
-    <div class="order-drawer" id="order-drawer" aria-hidden="true" role="dialog">
+        <!-- Verified Customer Stories & Testimonials -->
+        <section class="testimonials-section" id="reviews">
+            <div class="container-wide">
+                <div class="testimonials-heading">
+                    <p class="eyebrow">Client Experiences</p>
+                    <h2>Trusted across Saharanpur<br><em>and Dehradun modular kitchens.</em></h2>
+                </div>
+
+                <div class="testimonials-grid">
+                    <article class="testimonial-card">
+                        <div class="rating-stars">★★★★★</div>
+                        <p class="review-text">"Sushil Interior installed a 4-burner glass hob and Nano-White quartz slab in our Court Road home. The custom teak cutlery trays fit our spice jars and spoons with millimeter precision. Best kitchen craft in UP."</p>
+                        <div class="reviewer-meta">
+                            <strong>Rajesh &amp; Sunita Singhal</strong>
+                            <span>Court Road, Saharanpur · Complete Kitchen Installation</span>
+                        </div>
+                    </article>
+
+                    <article class="testimonial-card">
+                        <div class="rating-stars">★★★★★</div>
+                        <p class="review-text">"The filterless motion-sensor chimney handled heavy tadka frying without a single trace of smoke. Their blind corner LeMans unit recovered huge storage space that was previously wasted. Highly recommended!"</p>
+                        <div class="reviewer-meta">
+                            <strong>Col. Arvind Negi (Retd.)</strong>
+                            <span>Rajpur Road, Dehradun · Appliances &amp; Hardware Retrofit</span>
+                        </div>
+                    </article>
+
+                    <article class="testimonial-card">
+                        <div class="rating-stars">★★★★★</div>
+                        <p class="review-text">"Having a solid teak cutlery drawer organizer instead of cheap plastic inserts elevates the whole cooking experience every day. German Blum soft-close glide feels effortless."</p>
+                        <div class="reviewer-meta">
+                            <strong>Dr. Meenakshi Bansal</strong>
+                            <span>Gill Colony, Saharanpur · Custom Cutlery &amp; Slabs</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kitchen Appliances & Cutlery FAQ -->
+        <section class="faq-section" id="faq">
+            <div class="container-wide">
+                <div class="faq-header">
+                    <p class="eyebrow">Clear Guidance</p>
+                    <h2>Frequently asked questions<br><em>about kitchen appliances &amp; cutlery.</em></h2>
+                </div>
+
+                <div class="faq-accordion">
+                    <details class="faq-item" open>
+                        <summary class="faq-question">
+                            <span>How do I choose between an engineered quartz slab and Black Galaxy granite?</span>
+                            <span class="faq-icon">+</span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Engineered quartz provides a non-porous, perfectly uniform surface that is 100% impervious to haldi (turmeric), lemon juice, and tea stains. Natural Black Galaxy granite offers higher direct scorching resistance up to 500°C and a classic shimmering mica aesthetic. Both are fabricated and calibrated to exact dimensions in our workshop.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Are the solid CP teak cutlery trays safe from moisture and kitchen steam?</span>
+                            <span class="faq-icon">+</span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Yes. Every CP Teak cutlery tray undergoes 45 days of scientific kiln drying to an 8–10% moisture content. They are then treated with food-safe natural walnut and mineral oil, creating a water-repellent barrier that prevents mould, swelling, or odor absorption.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>Do you provide on-site measurement and white-glove installation?</span>
+                            <span class="faq-icon">+</span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>Yes, absolutely. We provide complimentary on-site laser measurements across Saharanpur and Dehradun. Our master Karigars personally route the sink and stove hob openings, install the countertop slabs, and mount all German drawer runners.</p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary class="faq-question">
+                            <span>What warranty applies to built-in hobs, chimneys, and Blum hardware?</span>
+                            <span class="faq-icon">+</span>
+                        </summary>
+                        <div class="faq-answer">
+                            <p>All built-in glass hobs carry a 2 to 5-year burner and glass warranty. Chimneys feature lifetime motor warranties. German Blum and Hettich drawer runners and soft-close hinges come with lifetime replacement warranties.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Consultation & Studio Booking Form Section -->
+        <section class="consultation" id="consultation">
+            <div class="consultation-info">
+                <p class="eyebrow">Initiate Collaboration</p>
+                <h2>Engineered precision<br><em>for sacred cooking.</em></h2>
+                <p class="lead-copy" style="color: rgba(255,255,255,0.85);">
+                    Visit our Saharanpur modular display workshop or schedule a kitchen design consultation at our Dehradun studio. We specialize exclusively in custom kitchen slabs (slape), stoves &amp; hobs, and cutlery compartments.
+                </p>
+
+                <div class="contact-studios-grid">
+                    <div class="studio-loc-card">
+                        <span class="loc-title">Saharanpur Works &amp; Showroom</span>
+                        <span class="loc-time">10:00 AM – 8:00 PM IST (Mon–Sat)</span>
+                        <p class="loc-address">
+                            Court Road, Near Gill Colony<br>
+                            Saharanpur, Uttar Pradesh 247001<br>
+                            <a href="tel:+919876543210" class="loc-contact-link">📞 +91 98765 43210</a>
+                        </p>
+                    </div>
+
+                    <div class="studio-loc-card">
+                        <span class="loc-title">Dehradun Design Studio</span>
+                        <span class="loc-time">10:00 AM – 8:00 PM IST (Mon–Sat)</span>
+                        <p class="loc-address">
+                            Rajpur Road, Near Jakhan<br>
+                            Dehradun, Uttarakhand 248001<br>
+                            <a href="tel:+919876543210" class="loc-contact-link">📞 +91 98765 43210</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Booking Form -->
+            <div class="consultation-form-wrapper">
+                <h3 class="form-card-title">Request Kitchen Consultation</h3>
+                <form id="consultation-form">
+                    <div class="form-row-dual">
+                        <label>
+                            Your Full Name
+                            <input required name="name" id="field-name" placeholder="Rajesh Singhal">
+                        </label>
+                        <label>
+                            Phone or Email
+                            <input required name="contact" id="field-contact" placeholder="+91 98765 00000">
+                        </label>
+                    </div>
+
+                    <div class="form-row-dual">
+                        <label>
+                            Kitchen Scope
+                            <select name="interest" id="field-service">
+                                <option value="kitchen-accessories">Kitchen Counter Slabs, Stoves &amp; Cutlery</option>
+                                <option value="slab-installation">Calibrated Quartz / Granite Slab (Slape) Installation</option>
+                                <option value="stove-integration">Built-in Toughened Glass Gas Stove &amp; Hob</option>
+                                <option value="cutlery-compartments">Handcrafted CP Teak Cutlery Compartments</option>
+                                <option value="chimney-ventilation">Motion-Sensor Extraction Chimney Hood</option>
+                                <option value="tall-pantry">Tall Pantry Larder Unit &amp; Corner LeMans</option>
+                                <option value="complete-kitchen">Complete Modular Kitchen Suite</option>
+                            </select>
+                        </label>
+                        <label>
+                            City / Location
+                            <input name="location" id="field-location" placeholder="Saharanpur or Dehradun">
+                        </label>
+                    </div>
+
+                    <label class="form-full-width">
+                        Kitchen Dimensions &amp; Hardware Requirements
+                        <textarea name="message" id="field-message" rows="4" placeholder="Tell us about your kitchen dimensions, existing layout, preferred stove burners, cutlery organizers, and expected date..."></textarea>
+                    </label>
+
+                    <button class="button submit-inquiry-btn" type="submit">
+                        <span>Send Consultation Request</span>
+                        <span>→</span>
+                    </button>
+                    <p class="form-message" role="status"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Site Footer -->
+    <footer>
+        <div class="footer-brand-side">
+            <a class="brand" href="#top">
+                <span class="brand-monogram">SI</span>
+                <strong>Sushil Interior</strong>
+            </a>
+            <p>Bespoke kitchen appliances, precision German hardware, handcrafted Saharanpur CP teak cutlery organizers, and calibrated countertop slabs. Exclusively serving Saharanpur and Dehradun.</p>
+        </div>
+
+        <div class="footer-links-col">
+            <strong class="footer-col-head">Appliances &amp; Cutlery</strong>
+            <a href="#appliances">Built-in Gas Hobs</a>
+            <a href="#cutlery">CP Teak Cutlery Trays</a>
+            <a href="#appliances">Filterless Chimneys</a>
+            <a href="#appliances">Built-in Ovens</a>
+            <a href="#slabs">Quartz Counter Slabs</a>
+        </div>
+
+        <div class="footer-links-col">
+            <strong class="footer-col-head">Interactive Studio</strong>
+            <a href="#drawer-studio">Drawer Configurator</a>
+            <a href="#studio">3D WebGL Kitchen</a>
+            <a href="#before-after">Transformations</a>
+            <a href="#estimator">Kitchen Estimator (₹)</a>
+            <a href="about.html">About Heritage</a>
+        </div>
+
+        <div class="footer-links-col">
+            <strong class="footer-col-head">Studios &amp; Workshops</strong>
+            <a href="tel:+919876543210">+91 98765 43210</a>
+            <span>Court Road, Saharanpur, UP</span>
+            <span>Rajpur Road, Dehradun, UK</span>
+            <span>contact@sushilinterior.com</span>
+            <span>© <span id="footer-year"></span> Sushil Interior</span>
+        </div>
+    </footer>
+
+    <!-- Order Listing & Quote Basket Drawer Modal -->
+    <div class="order-drawer" id="order-drawer" aria-hidden="true" role="dialog" aria-modal="true">
         <div class="order-drawer-backdrop" data-close-cart></div>
         <div class="order-drawer-panel">
             <div class="order-drawer-header">
-                <h3 class="order-drawer-title">Bespoke Order Inquiry Basket</h3>
-                <button class="case-study-close" data-close-cart aria-label="Close cart">✕</button>
+                <h3 class="order-drawer-title">Kitchen Hardware Quote Basket</h3>
+                <button class="drawer-close-btn" data-close-cart aria-label="Close quote basket">✕</button>
             </div>
-            <div class="order-items-list" id="order-items-list"></div>
+
+            <!-- Basket Items List -->
+            <div class="order-items-list" id="order-items-list">
+                <!-- Populated dynamically by script.js -->
+            </div>
+
+            <!-- Basket Drawer Footer -->
             <div class="order-drawer-footer">
                 <div class="pincode-check-wrap">
-                    <input type="text" id="pincode-input" class="pincode-input" placeholder="Enter Delivery PIN Code (e.g. 110001)" maxlength="6">
-                    <button class="pincode-btn" id="pincode-btn">Check</button>
+                    <input type="text" id="pincode-input" class="pincode-input" placeholder="Enter PIN code (e.g. 247001)" maxlength="6">
+                    <button class="pincode-btn" id="pincode-btn">Check Delivery</button>
                 </div>
+                <div id="pincode-status" class="pincode-status"></div>
+
                 <div class="order-total-row">
-                    <span class="order-total-label">Estimated Woodcraft Quote:</span>
+                    <span class="order-total-label">Estimated Hardware Quote:</span>
                     <span class="order-total-val" id="order-total-val">₹0</span>
                 </div>
-                <button class="button-primary order-submit-btn" id="order-submit-btn" style="width: 100%; justify-content: center; padding: 14px;">
-                    <span>Submit Order Quote Request ↗</span>
+
+                <button class="button order-submit-btn" id="order-submit-btn" style="width: 100%; justify-content: center;">
+                    <span>Transfer Basket to Consultation Request ↗</span>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Video Story Modal -->
-    <div class="video-modal" id="video-modal" aria-hidden="true" role="dialog">
-        <div class="video-modal-backdrop" data-video-close></div>
-        <div class="video-modal-content">
-            <button class="video-modal-close" data-video-close aria-label="Close story video">✕</button>
-            <video controls poster="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=85">
-                <source src="https://cdn.coverr.co/videos/coverr-a-woman-in-a-modern-house-1574/1080p.mp4" type="video/mp4">
-            </video>
+    <!-- Quick Search Modal -->
+    <div class="search-modal" id="search-modal" aria-hidden="true" role="dialog">
+        <div class="search-modal-backdrop" id="search-close-backdrop"></div>
+        <div class="search-modal-card">
+            <div class="search-input-wrapper">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="search-modal-input" placeholder="Search built-in hobs, teak cutlery trays, chimneys, slabs..." autocomplete="off">
+                <button class="search-close-btn" id="search-close-btn" aria-label="Close search">✕</button>
+            </div>
+            <div class="search-results-list" id="search-results-list">
+                <div class="search-placeholder-msg">Type to search across appliances, cutlery, stoves and slabs...</div>
+            </div>
         </div>
     </div>
 
-    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
-        <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
-    </button>
-
+    <!-- Floating Toast Notice -->
     <div class="toast-notice" id="toast-notice" role="status">
-        <span class="toast-dot" style="color: var(--color-brass);">✦</span>
-        <span class="toast-msg">Notification</span>
+        <span class="toast-dot">✦</span>
+        <span class="toast-msg">Item added to basket</span>
     </div>
 
-    <!-- Scripts -->
-    <script type="importmap">
-    {
-      "imports": {
-        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
-      }
-    }
-    </script>
+    <!-- Back to Top Floating Button -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
+    <!-- Main Client-Side Interaction Engine -->
     <script src="script.js"></script>
+
+    <!-- 3D Modular Kitchen WebGL Engine -->
     <script type="module" src="webkit.js"></script>
 </body>
 </html>
-
